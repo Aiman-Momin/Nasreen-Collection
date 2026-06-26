@@ -1,0 +1,6 @@
+{
+  "name": "Nasreen Collection",
+  "description": "Premium baby clothes and gifts shop based in Mira Road, Mumbai with pan-India delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
