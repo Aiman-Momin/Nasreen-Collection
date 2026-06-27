@@ -7,7 +7,12 @@ import { productCategories, storeFaqs } from './content';
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState(() => {
+    if (typeof window === 'undefined') return 'home';
+    const storedPage = window.localStorage.getItem('nasreen-current-page');
+    if (storedPage === 'tumblr') return 'tumblr';
+    return window.location.pathname === '/tumblr' ? 'tumblr' : 'home';
+  });
   const [activeTab, setActiveTab] = useState('all');
 
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
@@ -18,6 +23,16 @@ export default function App() {
   };
 
   const getCategoryImage = (_id: string, image: any) => image;
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('nasreen-current-page', currentPage);
+      const nextPath = currentPage === 'tumblr' ? '/tumblr' : '/';
+      if (window.location.pathname !== nextPath) {
+        window.history.pushState({}, '', nextPath);
+      }
+    }
+  }, [currentPage]);
 
   useEffect(() => {
     if (currentPage !== 'home') {
@@ -175,6 +190,8 @@ export default function App() {
     }
   ];
 
+  const [selectedProduct, setSelectedProduct] = useState<(typeof tumblrProducts)[number] | null>(null);
+
   return (
     <div className="min-h-screen bg-[#FFFBEB] font-sans antialiased text-gray-800">
       
@@ -198,7 +215,7 @@ export default function App() {
           <div className="flex justify-between h-20 items-center">
             
             {/* Logo */}
-            <a href="#home" className="flex items-center space-x-2.5 group">
+            <a href="#tumblrs" className="flex items-center space-x-2.5 group">
               <img
                 src="/profile.jpg"
                 alt="Nasreen Collection profile"
@@ -337,7 +354,11 @@ export default function App() {
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
               {tumblrProducts.map((product) => (
-                <div key={product.id} className="rounded-3xl border border-pink-100 bg-white shadow-sm overflow-hidden">
+                <div
+                  key={product.id}
+                  onClick={() => setSelectedProduct(product)}
+                  className="cursor-pointer rounded-3xl border border-pink-100 bg-white shadow-sm overflow-hidden transition hover:-translate-y-1 hover:shadow-md"
+                >
                   <img
                     src={product.image}
                     alt={product.title}
@@ -367,7 +388,7 @@ export default function App() {
         </div>
       ) : (
         <>
-          <section id="home" className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-white via-[#FFFDF5] to-[#FFFBEB]">
+          <section id="tumblrs" className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-white via-[#FFFDF5] to-[#FFFBEB]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
@@ -893,6 +914,64 @@ export default function App() {
           <ArrowLeft className="w-5 h-5" />
         </button>
       )}
+
+      <AnimatePresence>
+        {selectedProduct && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 px-4 py-6"
+            onClick={() => setSelectedProduct(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(event) => event.stopPropagation()}
+              className="w-full max-w-2xl overflow-hidden rounded-[28px] bg-white shadow-2xl"
+            >
+              <div className="relative">
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.title}
+                  className="h-auto max-h-[70vh] w-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
+                <button
+                  type="button"
+                  onClick={() => setSelectedProduct(null)}
+                  className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-gray-700 shadow-md transition hover:bg-white"
+                  aria-label="Close product view"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              <div className="space-y-4 p-5 sm:p-6">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-pink-600">Premium Tumbler</p>
+                  <h3 className="mt-2 text-xl font-bold text-gray-900">{selectedProduct.title}</h3>
+                </div>
+                <p className="text-sm leading-6 text-gray-600">{selectedProduct.description}</p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="rounded-full bg-pink-50 px-3 py-1 text-sm font-semibold text-pink-700">{selectedProduct.price}</span>
+                  {selectedProduct.volume && (
+                    <span className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700">{selectedProduct.volume}</span>
+                  )}
+                </div>
+                <a
+                  href={createWhatsAppLink(`Hi! I want to order: ${selectedProduct.title} - ${selectedProduct.price}`)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-pink-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-pink-700"
+                >
+                  Contact to Order
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* FLOATING WHATSAPP BUTTON */}
       <a
