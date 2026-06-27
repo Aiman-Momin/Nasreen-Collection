@@ -54,23 +54,23 @@ export default function App() {
   const tumblrProducts = [
     {
       id: 'pink-basic',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Pink)',
+      title: 'Pink Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Pink tumblr.png',
       price: '₹399',
       volume: '1200ml',
-      description: 'Pink — insulated stainless steel tumbler with handle, lid & straw.'
+      description: 'Pink — insulated stainless steel tumbler with handle, lid, and straw.'
     },
     {
       id: 'dark-green',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Dark Green)',
+      title: 'Dark Green Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Dark Green tumblr.png',
       price: '₹399',
       volume: '1200ml',
-      description: 'Dark green — insulated stainless steel tumbler, leakproof and double-walled.'
+      description: 'Dark green — insulated stainless steel tumbler with leakproof lid.'
     },
     {
       id: 'bright-green',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Bright Green)',
+      title: 'Bright Green Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Bright green tumbler.png',
       price: '₹399',
       volume: '1200ml',
@@ -78,23 +78,23 @@ export default function App() {
     },
     {
       id: 'white',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (White)',
+      title: 'White Insulated Stainless Steel Tumbler – 1200ml',
       image: '/White tumblr.png',
       price: '₹399',
       volume: '1200ml',
-      description: 'White — insulated stainless steel tumbler, stylish matte finish.'
+      description: 'White — insulated stainless steel tumbler with clean modern style.'
     },
     {
       id: 'black',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Black)',
+      title: 'Black Insulated Stainless Steel Tumbler – 1200ml',
       image: '/black tumblr.png',
       price: '₹399',
       volume: '1200ml',
-      description: 'Black — insulated stainless steel tumbler with premium finish.'
+      description: 'Black — insulated stainless steel tumbler with sleek matte finish.'
     },
     {
       id: 'offwhite',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Offwhite)',
+      title: 'Offwhite Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Offwhite tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -102,31 +102,31 @@ export default function App() {
     },
     {
       id: 'light-blue',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Light Blue)',
+      title: 'Light Blue Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Light blue tumblr.jpg',
       price: '₹399',
       volume: '1200ml',
-      description: 'Light blue — insulated stainless steel tumbler with glossy finish.'
+      description: 'Light blue — insulated stainless steel tumbler with glossy color.'
     },
     {
       id: 'navy-blue',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Navy Blue)',
+      title: 'Navy Blue Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Navy blue tumblr.png',
       price: '₹399',
       volume: '1200ml',
-      description: 'Navy blue — insulated stainless steel tumbler, sleek design.'
+      description: 'Navy blue — insulated stainless steel tumbler with premium finish.'
     },
     {
       id: 'neon-blue',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Neon Blue)',
+      title: 'Neon Blue Insulated Stainless Steel Tumbler – 1200ml',
       image: '/neon blue tumblr.png',
       price: '₹399',
       volume: '1200ml',
-      description: 'Neon blue — bold insulated tumbler for active use.'
+      description: 'Neon blue — insulated stainless steel tumbler with bold design.'
     },
     {
       id: 'red',
-      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Red)',
+      title: 'Red Insulated Stainless Steel Tumbler – 1200ml',
       image: '/red tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -134,59 +134,227 @@ export default function App() {
     },
     {
       id: 'blue-floral',
-      title: 'Floral Stainless Steel Tumbler – 1200ml (Blue Floral)',
+      title: 'Blue Floral Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Blue floral tumblr.png',
-      price: '₹549',
+      price: '₹550',
       volume: '1200ml',
-      description: 'Blue floral pattern — insulated stainless steel tumbler, handle & straw included.'
+      description: 'Blue floral pattern — insulated stainless steel tumbler with handle & straw.'
     },
     {
       id: 'purple-floral',
-      title: 'Floral Stainless Steel Tumbler – 1200ml (Purple Floral)',
+      title: 'Purple Floral Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Purple floral tumblr.png',
-      price: '₹549',
+      price: '₹550',
       volume: '1200ml',
-      description: 'Purple floral pattern — insulated stainless steel tumbler, handle & straw included.'
+      description: 'Purple floral pattern — insulated stainless steel tumbler with handle & straw.'
     },
     {
       id: 'holiday-waterbottle',
-      title: 'Holiday Waterbottle – 900ml, Insulated with Handle, Lid & Straw (Holiday)',
+      title: 'Holiday Insulated Waterbottle – 900ml',
       image: '/Holiday tumblr waterbottle.png',
       price: '₹599',
-      volume: '900ml',
-      description: 'Holiday design — 900ml insulated waterbottle with handle, lid & straw.'
+      volume: '',
+      description: 'Holiday design — insulated stainless steel water bottle with handle, lid & straw.'
     },
     {
       id: 'insulated-holiday',
-      title: 'Insulated Holiday Tumbler – 900ml (Insulated Holiday)',
+      title: 'Insulated Holiday Waterbottle – 900ml',
       image: '/Insulated Holiday Tumblr.png',
       price: '₹599',
-      volume: '900ml',
-      description: 'Insulated holiday tumbler — 900ml, handle & straw, keeps drinks hot or cold.'
+      volume: '',
+      description: 'Holiday style — insulated stainless steel water bottle with handle & straw.'
     },
     {
       id: 'pink-pinterest-daisy',
-      title: 'Pinteresty Daisy Tumbler – 900ml (Pink Daisy)',
+      title: 'Pink Daisy Insulated Waterbottle – 900ml',
       image: '/Pink Pinteresty Daisy tumblr.png',
       price: '₹599',
-      volume: '900ml',
-      description: 'Pink daisy pattern — 900ml insulated tumbler with handle and straw.'
+      volume: '',
+      description: 'Pink daisy pattern — insulated stainless steel tumbler with handle & straw.'
     },
     {
       id: 'purple-pinterest-daisy',
-      title: 'Pinteresty Daisy Tumbler – 900ml (Purple Daisy)',
+      title: 'Purple Daisy Insulated Waterbottle – 900ml',
       image: '/Pruple Pinteresty Daisy Tumblr.png',
       price: '₹599',
-      volume: '900ml',
-      description: 'Purple daisy pattern — 900ml insulated tumbler with handle and straw.'
+      volume: '',
+      description: 'Purple daisy pattern — insulated stainless steel tumbler with handle & straw.'
     },
     {
       id: 'pink-holiday',
-      title: 'Holiday Waterbottle – 900ml, Insulated with Handle, Lid & Straw (Pink Holiday)',
+      title: 'Pink Holiday Insulated Waterbottle – 900ml',
       image: '/Pink holiday tumblr waterbottle.png',
       price: '₹599',
-      volume: '900ml',
-      description: 'Pink holiday design — 900ml insulated tumbler with handle, lid & straw.'
+      volume: '',
+      description: 'Pink holiday design — insulated stainless steel water bottle with lid & straw.'
+    },
+    {
+      id: 'black-gucci-stanley',
+      title: 'Black Gucci & Stanley Style Insulated Tumbler – 1200ml',
+      image: '/black gucci&stanley tumblr.png',
+      price: '₹550',
+      volume: '1200ml',
+      description: 'Black Gucci and Stanley inspired insulated stainless steel tumbler with luxe print.'
+    },
+    {
+      id: 'blue-gucci-stanley',
+      title: 'Blue Gucci & Stanley Style Insulated Tumbler – 1200ml',
+      image: '/blue gucci&stanley tumblr.png',
+      price: '₹550',
+      volume: '1200ml',
+      description: 'Blue Gucci and Stanley inspired insulated stainless steel tumbler with premium style.'
+    },
+    {
+      id: 'black-golden-sleek',
+      title: 'Black with Golden Sleek Accent Insulated Tumbler – 1200ml',
+      image: '/black with golden sleek tumblr.png',
+      price: '₹550',
+      volume: '1200ml',
+      description: 'Black tumbler with golden sleek accent — insulated stainless steel with elegant style.'
+    },
+    {
+      id: 'blue-diamond',
+      title: 'Blue Diamond Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/blue diamond tumblr.jpg',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Blue diamond texture — insulated stainless steel tumbler with premium finish.'
+    },
+    {
+      id: 'green-diamond',
+      title: 'Green Diamond Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/green diamond tumblr.jpg',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Green diamond texture — insulated stainless steel tumbler with sparkling style.'
+    },
+    {
+      id: 'pink-diamond',
+      title: 'Pink Diamond Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/pink diamond tumblr.jpg',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Pink diamond texture — insulated stainless steel tumbler with stylish shine.'
+    },
+    {
+      id: 'purple-diamond',
+      title: 'Purple Diamond Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/purple diamond tumblr.png',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Purple diamond texture — insulated stainless steel tumbler with premium finish.'
+    },
+    {
+      id: 'blue-watercolor',
+      title: 'Blue Watercolor Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/blue watercolor tumblr.png',
+      price: '₹550',
+      volume: '1200ml',
+      description: 'Blue watercolor design — insulated stainless steel tumbler with artistic finish.'
+    },
+    {
+      id: 'football-blue-handle',
+      title: 'Football Insulated Stainless Steel Tumbler – 1200ml (Blue Handle)',
+      image: '/football tumblr(blue handle).png',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Football print — insulated stainless steel tumbler with blue handle.'
+    },
+    {
+      id: 'football-white-handle',
+      title: 'Football Insulated Stainless Steel Tumbler – 1200ml (White Handle)',
+      image: '/football tumblr(white handle).png',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Football print — insulated stainless steel tumbler with white handle.'
+    },
+    {
+      id: 'hello-kitty',
+      title: 'Hello Kitty Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/Hello kitty tumblr.png',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Hello Kitty design — insulated stainless steel tumbler with cute character print.'
+    },
+    {
+      id: 'light-blue-500ml',
+      title: 'Light Blue Insulated Stainless Steel Tumbler – 500ml',
+      image: '/light blue 500ml tumblr.png',
+      price: '₹450',
+      volume: '500ml',
+      description: 'Light blue — compact insulated stainless steel tumbler with handle and lid.'
+    },
+    {
+      id: 'pink-500ml',
+      title: 'Pink Insulated Stainless Steel Tumbler – 500ml',
+      image: '/pink 500ml tumblr.png',
+      price: '₹450',
+      volume: '500ml',
+      description: 'Pink — compact insulated stainless steel tumbler with handle and lid.'
+    },
+    {
+      id: 'purple-500ml',
+      title: 'Purple Insulated Stainless Steel Tumbler – 500ml',
+      image: '/purple 500 ml tumblr.png',
+      price: '₹450',
+      volume: '500ml',
+      description: 'Purple — compact insulated stainless steel tumbler with handle and lid.'
+    },
+    {
+      id: 'limited-edition-barbie-stanley',
+      title: 'Limited Edition Barbie Stanley Style Insulated Tumbler – 1200ml',
+      image: '/limited edition barbie stanley tumblr.png',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Limited edition Barbie Stanley inspired insulated stainless steel tumbler with luxe print.'
+    },
+    {
+      id: 'magic-dream-unicorn',
+      title: 'Magic Dream Unicorn Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/magic dream unicorn tumblr.png',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Unicorn fantasy — insulated stainless steel tumbler with dreamy unicorn artwork.'
+    },
+    {
+      id: 'spiderman',
+      title: 'Spiderman Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/spiderman tumblr.jpg',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Spiderman design — insulated stainless steel tumbler with bold superhero print.'
+    },
+    {
+      id: 'stanley-quencher-flowstate',
+      title: 'Stanley Quencher Flowstate Insulated Tumbler – 1200ml',
+      image: '/stanley quencher flowstate tumblr.png',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'Stanley Quencher style — insulated stainless steel tumbler with flowstate design.'
+    },
+    {
+      id: 'tri-color',
+      title: 'Tri-Color Pastel Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/tri-color (blue, prink and purple design) tumblr.png',
+      price: '₹550',
+      volume: '1200ml',
+      description: 'Tri-color pastel design — insulated stainless steel tumbler with playful finish.'
+    },
+    {
+      id: 'vibrant-blue',
+      title: 'Vibrant Blue Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/vibrant blue tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Vibrant blue — insulated stainless steel tumbler with eye-catching colour.'
+    },
+    {
+      id: 'neon-pink',
+      title: 'Neon Pink Insulated Stainless Steel Tumbler – 1200ml',
+      image: '/Neon Pink tumblr.png',
+      price: '₹550',
+      volume: '1200ml',
+      description: 'Neon pink — insulated stainless steel tumbler with bright statement finish.'
     }
   ];
 
