@@ -39,7 +39,7 @@ export default function App() {
   const tumblrProducts = [
     {
       id: 'pink-basic',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Pink)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Pink)',
       image: '/Pink tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -47,7 +47,7 @@ export default function App() {
     },
     {
       id: 'dark-green',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Dark Green)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Dark Green)',
       image: '/Dark Green tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -55,7 +55,7 @@ export default function App() {
     },
     {
       id: 'bright-green',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Bright Green)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Bright Green)',
       image: '/Bright green tumbler.png',
       price: '₹399',
       volume: '1200ml',
@@ -63,7 +63,7 @@ export default function App() {
     },
     {
       id: 'white',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (White)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (White)',
       image: '/White tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -71,7 +71,7 @@ export default function App() {
     },
     {
       id: 'black',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Black)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Black)',
       image: '/black tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -79,7 +79,7 @@ export default function App() {
     },
     {
       id: 'offwhite',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Offwhite)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Offwhite)',
       image: '/Offwhite tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -87,7 +87,7 @@ export default function App() {
     },
     {
       id: 'light-blue',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Light Blue)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Light Blue)',
       image: '/Light blue tumblr.jpg',
       price: '₹399',
       volume: '1200ml',
@@ -95,7 +95,7 @@ export default function App() {
     },
     {
       id: 'navy-blue',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Navy Blue)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Navy Blue)',
       image: '/Navy blue tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -103,7 +103,7 @@ export default function App() {
     },
     {
       id: 'neon-blue',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Neon Blue)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Neon Blue)',
       image: '/neon blue tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -111,7 +111,7 @@ export default function App() {
     },
     {
       id: 'red',
-      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Red)',
+      title: 'Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Red)',
       image: '/red tumblr.png',
       price: '₹399',
       volume: '1200ml',
@@ -119,7 +119,7 @@ export default function App() {
     },
     {
       id: 'blue-floral',
-      title: '# Floral Stainless Steel Tumbler – 1200ml (Blue Floral)',
+      title: 'Floral Stainless Steel Tumbler – 1200ml (Blue Floral)',
       image: '/Blue floral tumblr.png',
       price: '₹549',
       volume: '1200ml',
@@ -127,7 +127,7 @@ export default function App() {
     },
     {
       id: 'purple-floral',
-      title: '# Floral Stainless Steel Tumbler – 1200ml (Purple Floral)',
+      title: 'Floral Stainless Steel Tumbler – 1200ml (Purple Floral)',
       image: '/Purple floral tumblr.png',
       price: '₹549',
       volume: '1200ml',
@@ -135,7 +135,7 @@ export default function App() {
     },
     {
       id: 'holiday-waterbottle',
-      title: '# Holiday Waterbottle – 900ml, Insulated with Handle, Lid & Straw (Holiday)',
+      title: 'Holiday Waterbottle – 900ml, Insulated with Handle, Lid & Straw (Holiday)',
       image: '/Holiday tumblr waterbottle.png',
       price: '₹599',
       volume: '900ml',
@@ -143,7 +143,7 @@ export default function App() {
     },
     {
       id: 'insulated-holiday',
-      title: '# Insulated Holiday Tumbler – 900ml (Insulated Holiday)',
+      title: 'Insulated Holiday Tumbler – 900ml (Insulated Holiday)',
       image: '/Insulated Holiday Tumblr.png',
       price: '₹599',
       volume: '900ml',
@@ -151,7 +151,7 @@ export default function App() {
     },
     {
       id: 'pink-pinterest-daisy',
-      title: '# Pinteresty Daisy Tumbler – 900ml (Pink Daisy)',
+      title: 'Pinteresty Daisy Tumbler – 900ml (Pink Daisy)',
       image: '/Pink Pinteresty Daisy tumblr.png',
       price: '₹599',
       volume: '900ml',
@@ -159,7 +159,7 @@ export default function App() {
     },
     {
       id: 'purple-pinterest-daisy',
-      title: '# Pinteresty Daisy Tumbler – 900ml (Purple Daisy)',
+      title: 'Pinteresty Daisy Tumbler – 900ml (Purple Daisy)',
       image: '/Pruple Pinteresty Daisy Tumblr.png',
       price: '₹599',
       volume: '900ml',
@@ -167,7 +167,7 @@ export default function App() {
     },
     {
       id: 'pink-holiday',
-      title: '# Holiday Waterbottle – 900ml, Insulated with Handle, Lid & Straw (Pink Holiday)',
+      title: 'Holiday Waterbottle – 900ml, Insulated with Handle, Lid & Straw (Pink Holiday)',
       image: '/Pink holiday tumblr waterbottle.png',
       price: '₹599',
       volume: '900ml',
