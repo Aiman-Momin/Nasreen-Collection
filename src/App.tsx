@@ -929,13 +929,13 @@ export default function App() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(event) => event.stopPropagation()}
-              className="w-full max-w-2xl overflow-hidden rounded-[28px] bg-white shadow-2xl"
+              className="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-[28px] bg-white shadow-2xl"
             >
               <div className="relative">
                 <img
                   src={selectedProduct.image}
                   alt={selectedProduct.title}
-                  className="h-auto max-h-[70vh] w-full object-contain"
+                  className="h-auto max-h-[60vh] w-full object-contain sm:max-h-[70vh]"
                   referrerPolicy="no-referrer"
                 />
                 <button
