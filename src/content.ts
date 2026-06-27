@@ -42,12 +42,12 @@ export const productCategories: ProductCategory[] = [
   },
   {
     id: "diamond-tumblers",
-    name: "Diamond Tumblers",
+    name: "Premium Tumblers",
     emoji: "💎",
-    description: "Sparkling, diamond-textured leak-proof tumblers that keep drinks cold & stylish.",
-    startingPrice: "₹599",
+    description: "Premium insulated stainless steel tumblers with a diamond-textured finish, great for hot & cold drinks, gym, travel, and office use.",
+    startingPrice: "₹399",
     image: tumblerImg,
-    whatsAppText: "Hi! I'm interested in the Diamond Tumblers 💎"
+    whatsAppText: "Hi! I'm interested in the Premium Tumblers 💎"
   },
   {
     id: "baby-clothes",

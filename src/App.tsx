@@ -1,108 +1,179 @@
 import { useState, useEffect } from 'react';
-import { 
-  Truck, 
-  Sparkles, 
-  MapPin, 
-  Phone, 
-  ShoppingBag, 
-  Instagram, 
-  Menu, 
-  X, 
-  ExternalLink, 
-  Clock, 
-  MessageCircle, 
-  Heart, 
-  Gift, 
-  Star, 
-  ChevronDown,
-  Compass,
-  Smile
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-
-// Import local configuration and static content
-import { storeConfig } from './config';
-import { productCategories, trustFeatures, storeFaqs, storeStats } from './content';
-
-// Import local premium assets
+import { ArrowLeft, Truck, Sparkles, MapPin, Phone, ShoppingBag, Instagram, Menu, X, ExternalLink, Clock, MessageCircle, Heart, Gift, Star, ChevronDown, Compass } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import heroFlatLay from './assets/images/shop-flat-lay.png';
-import schoolBagImg from './assets/images/bag-korean.png';
-import newbornClothesImg from './assets/images/baby-clothes.png';
-import plushToyImg from './assets/images/plush-cat.png';
-
-// Map generated images to categories
-const getCategoryImage = (categoryId: string, fallbackUrl: string) => {
-  switch (categoryId) {
-    case 'school-bags':
-      return schoolBagImg;
-    case 'baby-clothes':
-      return newbornClothesImg;
-    case 'plush-toys':
-      return plushToyImg;
-    default:
-      return fallbackUrl;
-  }
-};
+import { storeConfig } from './config';
+import { productCategories, storeFaqs } from './content';
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
+  const [activeTab, setActiveTab] = useState('all');
+
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<'all' | 'bags' | 'toys' | 'lifestyle'>('all');
+  const [showBackButton, setShowBackButton] = useState(false);
 
-  // Reels details extracted from real Instagram scrape
-  const instagramReels = [
-    {
-      shortCode: "DYXAAQrtRka",
-      title: "Korean Bags Collection 🎒",
-      description: "Super aesthetic bags with plenty of pockets and cute accessories.",
-      category: "bags",
-      whatsAppText: "Hi! I saw your reel about the Korean School Bags (DYXAAQrtRka) and would love to order one!"
-    },
-    {
-      shortCode: "DZKkFY4s1B5",
-      title: "New Born Collection 🍼",
-      description: "Organic soft-cotton coordinated babywear for newborns.",
-      category: "lifestyle",
-      whatsAppText: "Hi! I saw your reel about the Newborn Baby Clothes (DZKkFY4s1B5) and would love to order!"
-    },
-    {
-      shortCode: "DX6rQoUtDzE",
-      title: "Korean Kids Water Bottle 🍼",
-      description: "BPA-free bottles with straws and temperature displays.",
-      category: "lifestyle",
-      whatsAppText: "Hi! I saw your reel about the Kids Bottles (DX6rQoUtDzE) and want to order!"
-    },
-    {
-      shortCode: "DXon_nADKk1",
-      title: "Diamond Textured Tumbler 💎",
-      description: "Premium double-walled sparkling tumblers for stylish sips.",
-      category: "lifestyle",
-      whatsAppText: "Hi! I saw your reel about the Diamond Tumbler (DXon_nADKk1) and want to buy one!"
-    },
-    {
-      shortCode: "DXZPtcejIvq",
-      title: "Die Cast Bike Model 🏍️",
-      description: "Realistic metal alloy collectibles for young bike enthusiasts.",
-      category: "toys",
-      whatsAppText: "Hi! I saw your reel about the Die-Cast Bike Model (DXZPtcejIvq) and want to order!"
-    },
-    {
-      shortCode: "DVQu3yiDD2M",
-      title: "Instant Print Kids Camera 📸",
-      description: "Digital camera that prints thermal black-and-white photos instantly.",
-      category: "toys",
-      whatsAppText: "Hi! I saw your reel about the Instant Print Camera (DVQu3yiDD2M) and want to order one!"
-    }
-  ];
-
-  // Helper for WhatsApp link creation
   const createWhatsAppLink = (text: string) => {
     return `https://wa.me/${storeConfig.whatsAppPhone}?text=${encodeURIComponent(text)}`;
   };
 
-  const filteredReels = activeTab === 'all' 
-    ? instagramReels 
-    : instagramReels.filter(reel => reel.category === activeTab);
+  const getCategoryImage = (_id: string, image: any) => image;
+
+  useEffect(() => {
+    if (currentPage !== 'home') {
+      const onScroll = () => {
+        setShowBackButton(window.scrollY > 120);
+      };
+
+      onScroll();
+      window.addEventListener('scroll', onScroll);
+      return () => window.removeEventListener('scroll', onScroll);
+    }
+
+    setShowBackButton(false);
+  }, [currentPage]);
+
+  const instagramReels: any[] = [];
+  const filteredReels = instagramReels;
+
+  const tumblrProducts = [
+    {
+      id: 'pink-basic',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Pink)',
+      image: '/Pink tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Pink — insulated stainless steel tumbler with handle, lid & straw.'
+    },
+    {
+      id: 'dark-green',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Dark Green)',
+      image: '/Dark Green tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Dark green — insulated stainless steel tumbler, leakproof and double-walled.'
+    },
+    {
+      id: 'bright-green',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Bright Green)',
+      image: '/Bright green tumbler.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Bright green — insulated stainless steel tumbler with easy-grip handle.'
+    },
+    {
+      id: 'white',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (White)',
+      image: '/White tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'White — insulated stainless steel tumbler, stylish matte finish.'
+    },
+    {
+      id: 'black',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Black)',
+      image: '/black tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Black — insulated stainless steel tumbler with premium finish.'
+    },
+    {
+      id: 'offwhite',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Offwhite)',
+      image: '/Offwhite tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Offwhite — insulated stainless steel tumbler with soft-touch finish.'
+    },
+    {
+      id: 'light-blue',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Light Blue)',
+      image: '/Light blue tumblr.jpg',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Light blue — insulated stainless steel tumbler with glossy finish.'
+    },
+    {
+      id: 'navy-blue',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Navy Blue)',
+      image: '/Navy blue tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Navy blue — insulated stainless steel tumbler, sleek design.'
+    },
+    {
+      id: 'neon-blue',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Neon Blue)',
+      image: '/neon blue tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Neon blue — bold insulated tumbler for active use.'
+    },
+    {
+      id: 'red',
+      title: '# Stainless Steel Tumbler – 1200ml, Leakproof Water Cup with Handle, Lid & Straw for Hot & Cold Drinks, Coffee Mug for Gym, Travel, Office & Outdoor (Red)',
+      image: '/red tumblr.png',
+      price: '₹399',
+      volume: '1200ml',
+      description: 'Red — insulated stainless steel tumbler with non-slip base.'
+    },
+    {
+      id: 'blue-floral',
+      title: '# Floral Stainless Steel Tumbler – 1200ml (Blue Floral)',
+      image: '/Blue floral tumblr.png',
+      price: '₹549',
+      volume: '1200ml',
+      description: 'Blue floral pattern — insulated stainless steel tumbler, handle & straw included.'
+    },
+    {
+      id: 'purple-floral',
+      title: '# Floral Stainless Steel Tumbler – 1200ml (Purple Floral)',
+      image: '/Purple floral tumblr.png',
+      price: '₹549',
+      volume: '1200ml',
+      description: 'Purple floral pattern — insulated stainless steel tumbler, handle & straw included.'
+    },
+    {
+      id: 'holiday-waterbottle',
+      title: '# Holiday Waterbottle – 900ml, Insulated with Handle, Lid & Straw (Holiday)',
+      image: '/Holiday tumblr waterbottle.png',
+      price: '₹599',
+      volume: '900ml',
+      description: 'Holiday design — 900ml insulated waterbottle with handle, lid & straw.'
+    },
+    {
+      id: 'insulated-holiday',
+      title: '# Insulated Holiday Tumbler – 900ml (Insulated Holiday)',
+      image: '/Insulated Holiday Tumblr.png',
+      price: '₹599',
+      volume: '900ml',
+      description: 'Insulated holiday tumbler — 900ml, handle & straw, keeps drinks hot or cold.'
+    },
+    {
+      id: 'pink-pinterest-daisy',
+      title: '# Pinteresty Daisy Tumbler – 900ml (Pink Daisy)',
+      image: '/Pink Pinteresty Daisy tumblr.png',
+      price: '₹599',
+      volume: '900ml',
+      description: 'Pink daisy pattern — 900ml insulated tumbler with handle and straw.'
+    },
+    {
+      id: 'purple-pinterest-daisy',
+      title: '# Pinteresty Daisy Tumbler – 900ml (Purple Daisy)',
+      image: '/Pruple Pinteresty Daisy Tumblr.png',
+      price: '₹599',
+      volume: '900ml',
+      description: 'Purple daisy pattern — 900ml insulated tumbler with handle and straw.'
+    },
+    {
+      id: 'pink-holiday',
+      title: '# Holiday Waterbottle – 900ml, Insulated with Handle, Lid & Straw (Pink Holiday)',
+      image: '/Pink holiday tumblr waterbottle.png',
+      price: '₹599',
+      volume: '900ml',
+      description: 'Pink holiday design — 900ml insulated tumbler with handle, lid & straw.'
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-[#FFFBEB] font-sans antialiased text-gray-800">
@@ -244,167 +315,251 @@ export default function App() {
         </AnimatePresence>
       </nav>
 
-      {/* 3. HERO SECTION */}
-      <section id="home" className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-white via-[#FFFDF5] to-[#FFFBEB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Content */}
-            <div className="lg:col-span-6 space-y-8 text-center lg:text-left">
-              <span className="inline-flex items-center gap-1.5 bg-pink-50 border border-pink-200 text-pink-700 text-sm font-semibold px-4 py-1.5 rounded-full shadow-sm">
-                <Sparkles className="w-4 h-4 fill-pink-100" />
-                Premium Korean Kawaii Goods Store
-              </span>
-              
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
-                Cute gifts your <br className="hidden sm:inline" />
-                <span className="text-pink-600 relative">
-                  little ones
-                  <span className="absolute bottom-1 left-0 w-full h-2 bg-pink-100 -z-10 rounded"></span>
-                </span> will love 🎀
-              </h1>
-              
-              <p className="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Discover a handpicked collection of adorable baby essentials, trendy Korean school bags, interactive toys, sparkling tumblers, and instant print cameras. We make gifting delightful and order placement effortless!
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a 
-                  href="#categories" 
-                  className="inline-flex items-center justify-center bg-pink-600 hover:bg-pink-700 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 text-lg"
-                >
-                  Shop Categories 🛍️
-                </a>
-                <a 
-                  href={createWhatsAppLink("Hi Nasreen Collection! I want to order some cute items. Please guide me!")}
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center bg-white border-2 border-pink-200 text-pink-700 hover:border-pink-300 hover:bg-pink-50 font-semibold px-8 py-4 rounded-full shadow-md transition duration-200 text-lg gap-2"
-                >
-                  <MessageCircle className="w-5 h-5 fill-current" />
-                  <span>Order on WhatsApp 🎀</span>
-                </a>
+      {currentPage === 'tumblr' ? (
+        <div className="min-h-[calc(100vh-5rem)] bg-[#FFF6FB] py-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] text-pink-600 font-bold">Tumblr Collection</p>
+                <h1 className="mt-3 text-2xl sm:text-3xl font-bold text-gray-900">Premium Tumblers</h1>
+                <p className="mt-3 text-xs sm:text-sm text-gray-600 max-w-2xl">
+                  Insulated stainless steel tumblers with a diamond-textured finish. Premium tumblers starting from ₹399.
+                </p>
               </div>
-
-              {/* Stats Bar */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-pink-100">
-                <div className="text-center lg:text-left">
-                  <p className="text-2xl sm:text-3xl font-display font-bold text-pink-700">1.5K+</p>
-                  <p className="text-xs sm:text-sm text-gray-500 font-medium">Happy Families</p>
-                </div>
-                <div className="text-center lg:text-left">
-                  <p className="text-2xl sm:text-3xl font-display font-bold text-pink-700">50+</p>
-                  <p className="text-xs sm:text-sm text-gray-500 font-medium">Kawaii Items</p>
-                </div>
-                <div className="text-center lg:text-left">
-                  <p className="text-2xl sm:text-3xl font-display font-bold text-pink-700">India</p>
-                  <p className="text-xs sm:text-sm text-gray-500 font-medium">Delivery Across India</p>
-                </div>
-              </div>
+              <button
+                type="button"
+                onClick={() => setCurrentPage('home')}
+                className="inline-flex items-center justify-center rounded-full border border-pink-200 bg-white px-5 py-3 text-sm font-semibold text-pink-700 shadow-sm transition hover:bg-pink-50"
+              >
+                Back to Home
+              </button>
             </div>
 
-            {/* Right Composition Image */}
-            <div className="lg:col-span-6 relative flex justify-center">
-              <div className="relative w-full max-w-[480px]">
-                {/* Decorative Elements */}
-                <div className="absolute -top-6 -left-6 w-16 h-16 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-                <div className="absolute -bottom-8 -right-6 w-24 h-24 bg-amber-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-                
-                {/* Image Frame */}
-                <div className="relative bg-white p-4 rounded-3xl shadow-xl border border-pink-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
-                  <img 
-                    src={heroFlatLay} 
-                    alt="Cute products composition flat lay" 
-                    className="w-full aspect-square object-cover rounded-2xl"
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
+              {tumblrProducts.map((product) => (
+                <div key={product.id} className="rounded-3xl border border-pink-100 bg-white shadow-sm overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-48 sm:h-56 md:h-72 object-cover"
                     referrerPolicy="no-referrer"
                   />
+                  <div className="p-4 sm:p-5">
+                    <h2 className="text-sm sm:text-base font-semibold leading-snug text-gray-900 line-clamp-3">{product.title}</h2>
+                    <p className="mt-2 text-xs sm:text-sm text-gray-600">{product.description}</p>
+                    {product.volume && (
+                      <p className="mt-1 text-xs sm:text-sm text-gray-500">Volume: {product.volume}</p>
+                    )}
+                    <p className="mt-4 text-lg sm:text-xl font-bold text-pink-600">{product.price}</p>
+                    <a
+                      href={createWhatsAppLink(`Hi! I want to order: ${product.title} - ${product.price}`)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-pink-600 px-4 py-3 text-xs sm:text-sm font-semibold text-white transition hover:bg-pink-700"
+                    >
+                      Order on WhatsApp
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          <section id="home" className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-white via-[#FFFDF5] to-[#FFFBEB]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                {/* Left Content */}
+                <div className="lg:col-span-6 space-y-8 text-center lg:text-left">
+                  <span className="inline-flex items-center gap-1.5 bg-pink-50 border border-pink-200 text-pink-700 text-sm font-semibold px-4 py-1.5 rounded-full shadow-sm">
+                    <Sparkles className="w-4 h-4 fill-pink-100" />
+                    Premium Korean Kawaii Goods Store
+                  </span>
                   
-                  {/* Floating Overlay Badge */}
-                  <div className="absolute -bottom-4 -left-4 bg-white border border-pink-100 rounded-2xl p-3 shadow-lg flex items-center space-x-2">
-                    <span className="text-2xl">🎁</span>
-                    <div>
-                      <p className="text-xs font-bold text-gray-900">Custom Gift Sets</p>
-                      <p className="text-[10px] text-pink-600 font-medium">Curated with love</p>
+                  <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
+                    Cute gifts your <br className="hidden sm:inline" />
+                    <span className="text-pink-600 relative">
+                      little ones
+                      <span className="absolute bottom-1 left-0 w-full h-2 bg-pink-100 -z-10 rounded"></span>
+                    </span> will love 🎀
+                  </h1>
+                  
+                  <p className="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Discover a handpicked collection of adorable baby essentials, trendy Korean school bags, interactive toys, sparkling tumblers, and instant print cameras. We make gifting delightful and order placement effortless!
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a 
+                      href="#categories" 
+                      className="inline-flex items-center justify-center bg-pink-600 hover:bg-pink-700 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 text-lg"
+                    >
+                      Shop Categories 🛍️
+                    </a>
+                    <a 
+                      href={createWhatsAppLink("Hi Nasreen Collection! I want to order some cute items. Please guide me!")}
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center bg-white border-2 border-pink-200 text-pink-700 hover:border-pink-300 hover:bg-pink-50 font-semibold px-8 py-4 rounded-full shadow-md transition duration-200 text-lg gap-2"
+                    >
+                      <MessageCircle className="w-5 h-5 fill-current" />
+                      <span>Order on WhatsApp 🎀</span>
+                    </a>
+                  </div>
+
+                  {/* Stats Bar */}
+                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-pink-100">
+                    <div className="text-center lg:text-left">
+                      <p className="text-2xl sm:text-3xl font-display font-bold text-pink-700">1.5K+</p>
+                      <p className="text-xs sm:text-sm text-gray-500 font-medium">Happy Families</p>
+                    </div>
+                    <div className="text-center lg:text-left">
+                      <p className="text-2xl sm:text-3xl font-display font-bold text-pink-700">50+</p>
+                      <p className="text-xs sm:text-sm text-gray-500 font-medium">Kawaii Items</p>
+                    </div>
+                    <div className="text-center lg:text-left">
+                      <p className="text-2xl sm:text-3xl font-display font-bold text-pink-700">India</p>
+                      <p className="text-xs sm:text-sm text-gray-500 font-medium">Delivery Across India</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* 4. SHOP BY CATEGORY GRID */}
-      <section id="categories" className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16 space-y-2 md:space-y-3">
-            <span className="text-pink-600 font-bold uppercase tracking-wider text-xs md:text-sm flex items-center justify-center gap-1">
-              <ShoppingBag className="w-4 h-4" /> Shop Our Boutique
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-              Browse Cute Categories 🎀
-            </h2>
-            <p className="text-sm md:text-base text-gray-500">
-              Tap any card to check pricing and order via WhatsApp!
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-8">
-            {productCategories.map((category) => (
-              <motion.a
-                key={category.id}
-                href={createWhatsAppLink(category.whatsAppText)}
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ y: -4 }}
-                className="category-card group relative rounded-2xl md:rounded-3xl overflow-hidden border border-pink-50 hover:border-pink-200 shadow-sm hover:shadow-md transition-all duration-300 bg-[#FDF2F8]"
-              >
-                <img
-                  src={getCategoryImage(category.id, category.image)}
-                  alt={category.name}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute top-2 right-2 md:top-3 md:right-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold text-pink-700 shadow-sm">
-                  {category.startingPrice}+
-                </div>
-                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/75 via-black/25 to-transparent">
-                  <div className="p-2.5 sm:p-3 md:p-4">
-                    <h3 className="font-display font-bold text-white text-[11px] sm:text-sm md:text-base leading-tight line-clamp-2">
-                      {category.emoji} {category.name}
-                    </h3>
-                    <p className="hidden md:block text-xs text-white/80 line-clamp-2 mt-1 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-16 transition-all duration-300 overflow-hidden">
-                      {category.description}
-                    </p>
-                    <span className="mt-1.5 md:mt-2 inline-flex items-center gap-1 bg-pink-600/90 text-white font-bold text-[10px] md:text-xs py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg md:rounded-xl md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-                      <MessageCircle className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current shrink-0" />
-                      Order
-                    </span>
+                {/* Right Composition Image */}
+                <div className="lg:col-span-6 relative flex justify-center">
+                  <div className="relative w-full max-w-[480px]">
+                    <div className="absolute -top-6 -left-6 w-16 h-16 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+                    <div className="absolute -bottom-8 -right-6 w-24 h-24 bg-amber-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+                    <div className="relative bg-white p-4 rounded-3xl shadow-xl border border-pink-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                      <img 
+                        src={heroFlatLay} 
+                        alt="Cute products composition flat lay" 
+                        className="w-full aspect-square object-cover rounded-2xl"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute -bottom-4 -left-4 bg-white border border-pink-100 rounded-2xl p-3 shadow-lg flex items-center space-x-2">
+                        <span className="text-2xl">🎁</span>
+                        <div>
+                          <p className="text-xs font-bold text-gray-900">Custom Gift Sets</p>
+                          <p className="text-[10px] text-pink-600 font-medium">Curated with love</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </motion.a>
-            ))}
-          </div>
 
-        </div>
-      </section>
+              </div>
+            </div>
+          </section>
 
-      {/* 5. WATCH OUR REELS SECTION */}
-      <section id="reels" className="py-12 md:py-20 bg-[#FDF2F8]/60 border-y border-pink-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16 space-y-2 md:space-y-3">
-            <span className="text-pink-600 font-bold uppercase tracking-wider text-xs md:text-sm flex items-center justify-center gap-1">
-              <Instagram className="w-4 h-4" /> Instagram Magic
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-              Watch Our Live Reels 🎬
-            </h2>
-            <p className="text-sm md:text-base text-gray-500 hidden sm:block">
-              See the lovely items in action! Hover a reel to order instantly via WhatsApp.
-            </p>
+          {/* 4. SHOP BY CATEGORY GRID */}
+          <section id="categories" className="py-12 md:py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16 space-y-2 md:space-y-3">
+                <span className="text-pink-600 font-bold uppercase tracking-wider text-xs md:text-sm flex items-center justify-center gap-1">
+                  <ShoppingBag className="w-4 h-4" /> Shop Our Boutique
+                </span>
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                  Browse Cute Categories 🎀
+                </h2>
+                <p className="text-sm md:text-base text-gray-500">
+                  Tap any card to check pricing and order via WhatsApp!
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-8">
+                {productCategories.map((category) => {
+                  const isTumblrCategory = category.id === 'diamond-tumblers';
+
+                  return isTumblrCategory ? (
+                    <motion.button
+                      key={category.id}
+                      type="button"
+                      onClick={() => setCurrentPage('tumblr')}
+                      whileHover={{ y: -4 }}
+                      className="category-card group relative rounded-2xl md:rounded-3xl overflow-hidden border border-pink-50 hover:border-pink-200 shadow-sm hover:shadow-md transition-all duration-300 bg-[#FDF2F8]"
+                    >
+                      <img
+                        src={getCategoryImage(category.id, category.image)}
+                        alt={category.name}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute top-2 right-2 md:top-3 md:right-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold text-pink-700 shadow-sm">
+                        {category.startingPrice}+
+                      </div>
+                      <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/75 via-black/25 to-transparent">
+                        <div className="p-2.5 sm:p-3 md:p-4">
+                          <h3 className="font-display font-bold text-white text-[11px] sm:text-sm md:text-base leading-tight line-clamp-2">
+                            {category.emoji} {category.name}
+                          </h3>
+                          <p className="hidden md:block text-xs text-white/80 line-clamp-2 mt-1 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-16 transition-all duration-300 overflow-hidden">
+                            {category.description}
+                          </p>
+                          <span className="mt-1.5 md:mt-2 inline-flex items-center gap-1 bg-pink-600/90 text-white font-bold text-[10px] md:text-xs py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg md:rounded-xl md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                            <MessageCircle className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current shrink-0" />
+                            View Tumblers
+                          </span>
+                        </div>
+                      </div>
+                    </motion.button>
+                  ) : (
+                    <motion.a
+                      key={category.id}
+                      href={createWhatsAppLink(category.whatsAppText)}
+                      target="_blank"
+                      rel="noreferrer"
+                      whileHover={{ y: -4 }}
+                      className="category-card group relative rounded-2xl md:rounded-3xl overflow-hidden border border-pink-50 hover:border-pink-200 shadow-sm hover:shadow-md transition-all duration-300 bg-[#FDF2F8]"
+                    >
+                      <img
+                        src={getCategoryImage(category.id, category.image)}
+                        alt={category.name}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute top-2 right-2 md:top-3 md:right-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-bold text-pink-700 shadow-sm">
+                        {category.startingPrice}+
+                      </div>
+                      <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/75 via-black/25 to-transparent">
+                        <div className="p-2.5 sm:p-3 md:p-4">
+                          <h3 className="font-display font-bold text-white text-[11px] sm:text-sm md:text-base leading-tight line-clamp-2">
+                            {category.emoji} {category.name}
+                          </h3>
+                          <p className="hidden md:block text-xs text-white/80 line-clamp-2 mt-1 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-16 transition-all duration-300 overflow-hidden">
+                            {category.description}
+                          </p>
+                          <span className="mt-1.5 md:mt-2 inline-flex items-center gap-1 bg-pink-600/90 text-white font-bold text-[10px] md:text-xs py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg md:rounded-xl md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                            <MessageCircle className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current shrink-0" />
+                            Order
+                          </span>
+                        </div>
+                      </div>
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {currentPage !== 'tumblr' && (
+        <>
+          {/* 5. WATCH OUR REELS SECTION */}
+          <section id="reels" className="py-12 md:py-20 bg-[#FDF2F8]/60 border-y border-pink-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16 space-y-2 md:space-y-3">
+                <span className="text-pink-600 font-bold uppercase tracking-wider text-xs md:text-sm flex items-center justify-center gap-1">
+                  <Instagram className="w-4 h-4" /> Instagram Magic
+                </span>
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+                  Watch Our Live Reels 🎬
+                </h2>
+                <p className="text-sm md:text-base text-gray-500 hidden sm:block">
+                  See the lovely items in action! Hover a reel to order instantly via WhatsApp.
+                </p>
 
             {/* Filter Tabs */}
             <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center pt-4 md:pt-6">
@@ -491,10 +646,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* 6. TRUST STRIP */}
-      <section id="why-us" className="bg-pink-700 py-16 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* 6. TRUST STRIP */}
+          <section id="why-us" className="bg-pink-700 py-16 text-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             
             <div className="flex flex-col items-center text-center space-y-3 p-4">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center text-3xl">
@@ -679,6 +834,8 @@ export default function App() {
           </div>
         </div>
       </section>
+        </>
+      )}
 
       {/* 8. FOOTER */}
       <footer className="bg-white border-t border-pink-100 py-12 text-sm text-gray-500">
@@ -725,6 +882,17 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* FIXED BACK-TO-HOME BUTTON (TOP-LEFT) */}
+      {showBackButton && (
+        <button
+          onClick={() => { setCurrentPage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          aria-label="Back to Home"
+          className="fixed top-4 left-4 z-50 inline-flex items-center justify-center bg-white/95 hover:bg-pink-50 text-pink-700 rounded-full p-3 shadow-lg transition-transform duration-200 hover:-translate-y-0.5 sm:top-5 sm:left-5 md:top-6 md:left-6"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+      )}
 
       {/* FLOATING WHATSAPP BUTTON */}
       <a
