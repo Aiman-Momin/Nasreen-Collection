@@ -34,3 +34,45 @@
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+/* Square category & reel cards */
+.category-card,
+.reel-card {
+  aspect-ratio: 1 / 1;
+}
+
+/* Instagram embed fills square container */
+.reel-embed {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.reel-embed iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 145%;
+  min-width: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
+}
+
+/* Hover overlay for reel cards (desktop) */
+.reel-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.45) 45%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .reel-card:hover .reel-overlay {
+    opacity: 1;
+  }
+}
