@@ -134,8 +134,8 @@ export const productCategories: ProductCategory[] = [
 
 export const trustFeatures = [
   {
-    title: "Free Delivery Across India",
-    description: "Get cute items delivered to your doorstep without paying extra shipping charges.",
+    title: "Delivery Across India",
+    description: "Get cute items delivered to your doorstep.",
     icon: "Truck"
   },
   {
@@ -162,7 +162,7 @@ export const storeFaqs = [
   },
   {
     question: "Do you deliver all over India?",
-    answer: "Yes, we ship across all states and cities in India! Shipping is fully free on our product orders, ensuring a delightful shopping experience."
+    answer: "Yes, we ship across all states and cities in India!"
   },
   {
     question: "Where is your physical shop located?",

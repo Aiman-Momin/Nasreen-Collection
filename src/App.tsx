@@ -110,11 +110,11 @@ export default function App() {
       {/* 1. SCROLLING MARQUEE BANNER */}
       <div className="w-full bg-pink-700 py-2.5 text-white overflow-hidden whitespace-nowrap border-b border-pink-800 select-none">
         <div className="animate-scroll flex gap-8 items-center text-sm font-semibold tracking-wider uppercase">
-          <span>✨ Free Shipping Across India 🇮🇳</span>
+          <span>✨ Delivery Across India 🇮🇳</span>
           <span>🎀 Order Via WhatsApp +91 89767 31508 📞</span>
           <span>🧸 Korean Kawaii Aesthetic Kids Collection 🎒</span>
           <span>🍼 Visit Our Shop at Mira Road, Mumbai 📍</span>
-          <span>✨ Free Shipping Across India 🇮🇳</span>
+          <span>✨ Delivery Across India 🇮🇳</span>
           <span>🎀 Order Via WhatsApp +91 89767 31508 📞</span>
           <span>🧸 Korean Kawaii Aesthetic Kids Collection 🎒</span>
           <span>🍼 Visit Our Shop at Mira Road, Mumbai 📍</span>
@@ -128,8 +128,12 @@ export default function App() {
             
             {/* Logo */}
             <a href="#home" className="flex items-center space-x-2.5 group">
-              <span className="text-3xl filter drop-shadow">🧸</span>
-              <span className="font-display text-2xl font-bold tracking-tight text-pink-700 transition duration-300 group-hover:text-pink-800">
+              <img
+                src="/profile.jpg"
+                alt="Nasreen Collection profile"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-pink-200 shadow-sm"
+              />
+              <span className="font-display text-xl sm:text-2xl font-bold tracking-tight text-pink-700 transition duration-300 group-hover:text-pink-800">
                 Nasreen Collection
               </span>
             </a>
@@ -293,8 +297,8 @@ export default function App() {
                   <p className="text-xs sm:text-sm text-gray-500 font-medium">Kawaii Items</p>
                 </div>
                 <div className="text-center lg:text-left">
-                  <p className="text-2xl sm:text-3xl font-display font-bold text-pink-700">Free</p>
-                  <p className="text-xs sm:text-sm text-gray-500 font-medium">All-India Delivery</p>
+                  <p className="text-2xl sm:text-3xl font-display font-bold text-pink-700">India</p>
+                  <p className="text-xs sm:text-sm text-gray-500 font-medium">Delivery Across India</p>
                 </div>
               </div>
             </div>
@@ -496,7 +500,7 @@ export default function App() {
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center text-3xl">
                 🚚
               </div>
-              <h3 className="font-display font-bold text-xl">Free Delivery Across India</h3>
+              <h3 className="font-display font-bold text-xl">Delivery Across India</h3>
               <p className="text-sm text-pink-100 leading-relaxed max-w-xs">
                 We safely deliver all your lovely products anywhere in India with zero shipping costs.
               </p>
@@ -731,7 +735,10 @@ export default function App() {
         aria-label="Contact on WhatsApp"
       >
         <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping -z-10"></span>
-        <MessageCircle className="w-7 h-7 fill-current" />
+        <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.174.2-.298.3-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12.001 0C5.372 0 0 5.372 0 12c0 2.102.546 4.087 1.5 5.823L0 24l6.347-1.668A11.94 11.94 0 0 0 12.001 24c6.629 0 12-5.372 12-12S18.63 0 12.001 0zm6.57 17.166c-.269.754-.987 1.34-1.74 1.56a9.22 9.22 0 0 1-4.321.925c-4.657 0-8.444-3.786-8.444-8.443 0-4.657 3.787-8.444 8.444-8.444 2.253 0 4.375.88 5.97 2.476a8.444 8.444 0 0 1 2.476 5.97c0 1.57-.49 3.085-1.42 4.356z"/>
+        </svg>
         
         {/* Hover Label */}
         <span className="absolute right-14 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
