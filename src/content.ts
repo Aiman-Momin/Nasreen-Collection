@@ -1,5 +1,5 @@
 import bagKoreanImg from './assets/images/bag-korean.png';
-import keychainImg from './assets/images/keychain.png';
+import keychainImg from './assets/images/keychain.jpg';
 import tumblerImg from './assets/images/tumbler.png';
 import babyClothesImg from './assets/images/baby-clothes.png';
 import plushCatImg from './assets/images/plush-cat.png';
@@ -7,8 +7,8 @@ import kidsBottleImg from './assets/images/kids-bottle.png';
 import catBagImg from './assets/images/cat-bag.png';
 import bikeModelImg from './assets/images/bike-model.png';
 import artSetsImg from './assets/images/post-15.jpg';
-import pvpStationImg from './assets/images/post-04.jpg';
-import instantPrintCameraImg from './assets/images/post-08.jpg';
+import pvpStationImg from './assets/images/post-04.png';
+import instantPrintCameraImg from './assets/images/post-08.png';
 import stitchBlindBoxImg from './assets/images/stitch .jpeg';
 
 export interface ProductCategory {
@@ -33,12 +33,12 @@ export const productCategories: ProductCategory[] = [
   },
   {
     id: "soft-keychains",
-    name: "Soft Keychains",
+    name: "Fun Toys",
     emoji: "🧸",
-    description: "Fluffy, adorable plush keychains featuring cute animals and cartoon characters.",
-    startingPrice: "₹150",
+    description: "Playful toy picks for kids including plushies, wind-up toys, mini fans, and novelty fun.",
+    startingPrice: "₹99",
     image: keychainImg,
-    whatsAppText: "Hi! I'm interested in the Soft Keychains 🧸"
+    whatsAppText: "Hi! I'm interested in the Fun Toys 🧸"
   },
   {
     id: "diamond-tumblers",
@@ -62,10 +62,10 @@ export const productCategories: ProductCategory[] = [
     id: "plush-toys",
     name: "Kawaii Plush Toys",
     emoji: "🐱",
-    description: "Cozy penguin and fluffy ragdoll cat plushies made of premium huggable fabrics.",
-    startingPrice: "₹290",
+    description: "Cozy plush cats with sound and light features, plus cute sleeping plush toys for gifting.",
+    startingPrice: "₹149",
     image: plushCatImg,
-    whatsAppText: "Hi! I'm interested in the Kawaii Plush Toys (Ragdoll & Penguin) 🐱🐧"
+    whatsAppText: "Hi! I'm interested in the Kawaii Plush Toys 🐱"
   },
   {
     id: "kids-bottles",
@@ -89,8 +89,8 @@ export const productCategories: ProductCategory[] = [
     id: "diecast-models",
     name: "Die-Cast Bike & Car Models",
     emoji: "🚗",
-    description: "High-quality, detailed 1:24 metal alloy replicas of sport bikes and supercars.",
-    startingPrice: "₹699",
+    description: "Detailed die-cast bikes, cars, and scooters with light, sound, and opening-door features.",
+    startingPrice: "₹249",
     image: bikeModelImg,
     whatsAppText: "Hi! I'm interested in the Die-Cast Bike & Car Models 🚗"
   },
@@ -125,8 +125,8 @@ export const productCategories: ProductCategory[] = [
     id: "print-cameras",
     name: "Instant Print Kids Cameras",
     emoji: "📸",
-    description: "Cute digital cameras that instantly print thermal photos of kids' adventures.",
-    startingPrice: "₹1200",
+    description: "Cute digital cameras that instantly print photos, including unicorn-themed kids cameras.",
+    startingPrice: "₹1299",
     image: instantPrintCameraImg,
     whatsAppText: "Hi! I'm interested in the Instant Print Kids Cameras 📸"
   }

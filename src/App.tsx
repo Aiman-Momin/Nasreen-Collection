@@ -9,9 +9,14 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(() => {
     if (typeof window === 'undefined') return 'home';
-    const storedPage = window.localStorage.getItem('nasreen-current-page');
-    if (storedPage === 'tumblr') return 'tumblr';
-    return window.location.pathname === '/tumblr' ? 'tumblr' : 'home';
+    const path = window.location.pathname;
+    if (path === '/tumblr') return 'tumblr';
+    if (path === '/plush') return 'plush';
+    if (path === '/fun') return 'fun';
+    if (path === '/camera') return 'camera';
+    if (path === '/diecast') return 'diecast';
+    if (path === '/gaming') return 'gaming';
+    return 'home';
   });
   const [activeTab, setActiveTab] = useState('all');
 
@@ -27,7 +32,19 @@ export default function App() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.localStorage.setItem('nasreen-current-page', currentPage);
-      const nextPath = currentPage === 'tumblr' ? '/tumblr' : '/';
+      const nextPath = currentPage === 'tumblr'
+        ? '/tumblr'
+        : currentPage === 'plush'
+          ? '/plush'
+          : currentPage === 'fun'
+            ? '/fun'
+            : currentPage === 'camera'
+              ? '/camera'
+              : currentPage === 'diecast'
+                ? '/diecast'
+                : currentPage === 'gaming'
+                  ? '/gaming'
+                  : '/';
       if (window.location.pathname !== nextPath) {
         window.history.pushState({}, '', nextPath);
       }
@@ -51,7 +68,16 @@ export default function App() {
   const instagramReels: any[] = [];
   const filteredReels = instagramReels;
 
-  const tumblrProducts = [
+  type ProductCardItem = {
+    id: string;
+    title: string;
+    image: string;
+    price: string;
+    volume: string;
+    description: string;
+  };
+
+  const tumblrProducts: ProductCardItem[] = [
     {
       id: 'pink-basic',
       title: 'Pink Insulated Stainless Steel Tumbler – 1200ml',
@@ -358,7 +384,273 @@ export default function App() {
     }
   ];
 
-  const [selectedProduct, setSelectedProduct] = useState<(typeof tumblrProducts)[number] | null>(null);
+  const plushProducts: ProductCardItem[] = [
+    {
+      id: 'sound-3-mode-cat',
+      title: 'Sound & 3-Mode Light Cat Plush Toy',
+      image: '/sound and 3 mode light cat.png',
+      price: '₹199',
+      volume: '',
+      description: 'Realistic plush white and black kitten with blue nestled inside a pink lace-trimmed blanket, featuring 3 light modes and sound.'
+    },
+    {
+      id: 'sleeping-grey-cat',
+      title: 'Sleeping Grey Cat Plush Toy',
+      image: '/sleeping cat grey.png',
+      price: '₹149',
+      volume: '',
+      description: 'Grey tabby cat plushy toy with sound.'
+    },
+    {
+      id: 'sleeping-black-white-cat',
+      title: 'Sleeping Black & White Cat Plush Toy',
+      image: '/sleeping cat black and white.jpg',
+      price: '₹149',
+      volume: '',
+      description: 'Black and white cat plushy toy with sound.'
+    },
+    {
+      id: 'sleeping-orange-cat',
+      title: 'Sleeping Orange Cat Plush Toy',
+      image: '/sleeping cat orange.png',
+      price: '₹149',
+      volume: '',
+      description: 'Orange cat plushy toy with sound.'
+    },
+  ];
+
+  const funProducts: ProductCardItem[] = [
+    {
+      id: 'shinchan-toy',
+      title: 'Wind-Up Shinchan Crawling Toy',
+      image: '/shinchan.jpg',
+      price: '₹150',
+      volume: '',
+      description: 'Wind-up Shinchan crawling toy holding a small alarm clock.'
+    },
+    {
+      id: 'mini-fan',
+      title: 'Mini Yellow & Blue Portable Handheld Fan',
+      image: '/fan.jpg',
+      price: '₹99',
+      volume: '',
+      description: 'Mini yellow and blue portable handheld fan.'
+    },
+    {
+      id: 'panda-toy',
+      title: 'Wind-Up Skipping Panda Toy',
+      image: '/panda.jpg',
+      price: '₹119',
+      volume: '',
+      description: 'Wind-up skipping panda toy with bright green exercise bar.'
+    },
+    {
+      id: 'barbie-makeup-kit',
+      title: 'Barbie Makeup Kit',
+      image: '/barbie makeup kit.png',
+      price: '₹1050',
+      volume: '',
+      description: 'Fashion girls organic Barbie makeup kit.'
+    },
+    {
+      id: 'airel-makeup-kit',
+      title: 'Ariel Makeup Kit',
+      image: '/airel makeup kit.jpg',
+      price: '₹649',
+      volume: '',
+      description: 'Fashion girls organic Ariel makeup kit.'
+    },
+    {
+      id: 'unicorn-makeup-kit',
+      title: 'Unicorn Makeup Kit',
+      image: '/unicorn makeup kit.jpg',
+      price: '₹349',
+      volume: '',
+      description: 'Fashion girls organic Unicorn makeup kit.'
+    },
+    {
+      id: 'frozen-makeup-kit',
+      title: 'Frozen Makeup Kit',
+      image: '/frozen makeup kit.png',
+      price: '₹999',
+      volume: '',
+      description: 'Fashion girls organic Frozen makeup kit.'
+    },
+    {
+      id: 'pink-squishy',
+      title: 'Pink Squishy Toy',
+      image: '/pink squishy.png',
+      price: '₹99',
+      volume: '',
+      description: 'Scented donut shaped squishy toy designed for stress relief.'
+    },
+    {
+      id: 'green-squishy',
+      title: 'Green Squishy Toy',
+      image: '/green squishy.jpg',
+      price: '₹99',
+      volume: '',
+      description: 'Scented donut shaped squishy toy designed for stress relief.'
+    },
+    {
+      id: 'stress-toy',
+      title: 'Unicorn Squishy Stress Toy',
+      image: '/stress toy.png',
+      price: '₹99',
+      volume: '',
+      description: 'Unicorn shaped squishy stress toy designed for relaxation. Also available in purple, yellow and blue colors.'
+    },
+    {
+      id: 'oreo-pinch',
+      title: 'Oreo Pinch Squishy Toy',
+      image: '/oreo pinch.png',
+      price: '₹199',
+      volume: '',
+      description: 'A cookie shaped squishy squeeze toy for stress relief.'
+    },
+    {
+      id: 'hello-kitty-squishy',
+      title: 'Hello Kitty Squishy Stress Toy',
+      image: '/hello kitty squishy.png',
+      price: '₹199',
+      volume: '',
+      description: 'Hello Kitty stress toy packaged with yellow hat and pink outfit.'
+    },
+    {
+      id: 'dark-pink-squishy',
+      title: 'Dark Pink Cat Paw Squishy',
+      image: '/dark pink squishy.png',
+      price: '₹199',
+      volume: '',
+      description: 'Dark pink cat paw squishy toy for stress relief.'
+    },
+    {
+      id: 'light-pink-squishy',
+      title: 'Light Pink Cat Paw Squishy',
+      image: '/light pink squishy.png',
+      price: '₹199',
+      volume: '',
+      description: 'Light pink cat paw squishy toy for stress relief.'
+    }
+  ];
+
+  const cameraProducts: ProductCardItem[] = [
+    {
+      id: 'instant-camera',
+      title: 'Unicorn Themed Instant Print Kids Camera',
+      image: '/instant print camera.png',
+      price: '₹1299',
+      volume: '',
+      description: 'Unicorn themed kids camera includes instant print and comes with a USB cable for charging.'
+    }
+  ];
+
+  const diecastProducts: ProductCardItem[] = [
+    {
+      id: 'black-diecast-car',
+      title: 'Black Die-Cast Police SUV',
+      image: '/black diecast.png',
+      price: '₹249',
+      volume: '',
+      description: 'Die-cast model of a black police SUV with opening doors.'
+    },
+    {
+      id: 'black-model-car',
+      title: 'Rolls Royce Black & Silver Die-Cast Model',
+      image: '/black model car.png',
+      price: '₹999',
+      volume: '',
+      description: 'Rolls Royce model with black and silver finish, golden detailing, lights, and sound.'
+    },
+    {
+      id: 'blue-diecast-car',
+      title: 'Blue Die-Cast Car',
+      image: '/blue diecast.png',
+      price: '₹249',
+      volume: '',
+      description: 'Die-cast model of a blue car with opening doors.'
+    },
+    {
+      id: 'blue-diecast-scooter',
+      title: 'Blue Die-Cast Scooter',
+      image: '/diecast scooter.png',
+      price: '₹249',
+      volume: '',
+      description: 'Die-cast model of a blue scooter with opening doors.'
+    },
+    {
+      id: 'green-model-car',
+      title: 'Green Die-Cast Model Car',
+      image: '/green model car.png',
+      price: '₹999',
+      volume: '',
+      description: 'Green LJX model die-cast car with light and sound.'
+    },
+    {
+      id: 'red-diecast-car',
+      title: 'Red Die-Cast Car',
+      image: '/red diecast with light and sound.jpg',
+      price: '₹249',
+      volume: '',
+      description: 'Die-cast model of a red car with opening doors and light and sound.'
+    }
+  ];
+
+  const [selectedProduct, setSelectedProduct] = useState<ProductCardItem | null>(null);
+
+  const renderCatalogPage = (eyebrow: string, title: string, description: string, items: ProductCardItem[]) => (
+    <div className="min-h-[calc(100vh-5rem)] bg-[radial-gradient(circle_at_top_left,_rgba(251,207,232,0.35),_transparent_30%),linear-gradient(135deg,_#fffaf7_0%,_#fff0f7_100%)] py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-pink-600 font-bold">{eyebrow}</p>
+            <h1 className="mt-3 text-2xl sm:text-3xl font-bold text-gray-900">{title}</h1>
+            <p className="mt-3 text-xs sm:text-sm text-gray-600 max-w-2xl">{description}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setCurrentPage('home')}
+            className="inline-flex items-center justify-center rounded-full border border-pink-200 bg-white px-5 py-3 text-sm font-semibold text-pink-700 shadow-sm transition hover:bg-pink-50"
+          >
+            Back to Home
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
+          {items.map((product) => (
+            <div
+              key={product.id}
+              onClick={() => setSelectedProduct(product)}
+              className="cursor-pointer rounded-[1.75rem] border border-pink-100 bg-white/95 shadow-[0_18px_45px_-20px_rgba(190,24,93,0.35)] overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_-18px_rgba(190,24,93,0.4)]"
+            >
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-full h-48 sm:h-56 md:h-72 object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="p-4 sm:p-5">
+                <h2 className="text-sm sm:text-base font-semibold leading-snug text-gray-900 line-clamp-3">{product.title}</h2>
+                <p className="mt-2 text-xs sm:text-sm text-gray-600">{product.description}</p>
+                {product.volume && (
+                  <p className="mt-1 text-xs sm:text-sm text-gray-500">Volume: {product.volume}</p>
+                )}
+                <p className="mt-4 text-lg sm:text-xl font-bold text-pink-600">{product.price}</p>
+                <a
+                  href={createWhatsAppLink(`Hi! I want to order: ${product.title} - ${product.price}`)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-pink-600 px-4 py-3 text-xs sm:text-sm font-semibold text-white transition hover:bg-pink-700"
+                >
+                  Order on WhatsApp
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-[#FFFBEB] font-sans antialiased text-gray-800">
@@ -501,62 +793,50 @@ export default function App() {
       </nav>
 
       {currentPage === 'tumblr' ? (
-        <div className="min-h-[calc(100vh-5rem)] bg-[#FFF6FB] py-10">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-pink-600 font-bold">Tumblr Collection</p>
-                <h1 className="mt-3 text-2xl sm:text-3xl font-bold text-gray-900">Premium Tumblers</h1>
-                <p className="mt-3 text-xs sm:text-sm text-gray-600 max-w-2xl">
-                  Insulated stainless steel tumblers with a diamond-textured finish. Premium tumblers starting from ₹399.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setCurrentPage('home')}
-                className="inline-flex items-center justify-center rounded-full border border-pink-200 bg-white px-5 py-3 text-sm font-semibold text-pink-700 shadow-sm transition hover:bg-pink-50"
-              >
-                Back to Home
-              </button>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
-              {tumblrProducts.map((product) => (
-                <div
-                  key={product.id}
-                  onClick={() => setSelectedProduct(product)}
-                  className="cursor-pointer rounded-3xl border border-pink-100 bg-white shadow-sm overflow-hidden transition hover:-translate-y-1 hover:shadow-md"
-                >
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-48 sm:h-56 md:h-72 object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="p-4 sm:p-5">
-                    <h2 className="text-sm sm:text-base font-semibold leading-snug text-gray-900 line-clamp-3">{product.title}</h2>
-                    <p className="mt-2 text-xs sm:text-sm text-gray-600">{product.description}</p>
-                    {product.volume && (
-                      <p className="mt-1 text-xs sm:text-sm text-gray-500">Volume: {product.volume}</p>
-                    )}
-                    <p className="mt-4 text-lg sm:text-xl font-bold text-pink-600">{product.price}</p>
-                    <a
-                      href={createWhatsAppLink(`Hi! I want to order: ${product.title} - ${product.price}`)}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-pink-600 px-4 py-3 text-xs sm:text-sm font-semibold text-white transition hover:bg-pink-700"
-                    >
-                      Order on WhatsApp
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        renderCatalogPage(
+          'Tumblr Collection',
+          'Premium Tumblers',
+          'Insulated stainless steel tumblers with a diamond-textured finish. Premium tumblers starting from ₹399.',
+          tumblrProducts
+        )
+      ) : currentPage === 'plush' ? (
+        renderCatalogPage(
+          'Kawaii Plush Toys',
+          'Cute Plushies & Toy Gifts',
+          'Adorable plush toys with sound, lights, and playful details for kids and gift lovers.',
+          plushProducts
+        )
+      ) : currentPage === 'fun' ? (
+        renderCatalogPage(
+          'Fun Toys',
+          'Playful Toy Picks',
+          'Cute and interactive toys including Shinchan, mini fans, and panda toys for fun gifts.',
+          funProducts
+        )
+      ) : currentPage === 'camera' ? (
+        renderCatalogPage(
+          'Instant Print Kids Cameras',
+          'Cute Camera Picks',
+          'Instant print cameras with fun themes and easy USB charging for kids.',
+          cameraProducts
+        )
+      ) : currentPage === 'diecast' ? (
+        renderCatalogPage(
+          'Die-Cast Bike & Car Models',
+          'Mini Collectibles',
+          'Detailed die-cast cars and scooters with opening doors, lights, and sound features.',
+          diecastProducts
+        )
+      ) : currentPage === 'gaming' ? (
+        renderCatalogPage(
+          'PVP Station Games',
+          'Handheld Video Games',
+          'Classic handheld gaming consoles with built-in fun for road trips and parties.',
+          gamingProducts
+        )
       ) : (
         <>
-          <section id="tumblrs" className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-b from-white via-[#FFFDF5] to-[#FFFBEB]">
+          <section id="tumblrs" className="relative py-12 md:py-20 overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(251,207,232,0.35),_transparent_28%),linear-gradient(135deg,_#fffdf8_0%,_#fff7fb_50%,_#fffaf0_100%)]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
@@ -619,7 +899,7 @@ export default function App() {
                   <div className="relative w-full max-w-[480px]">
                     <div className="absolute -top-6 -left-6 w-16 h-16 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
                     <div className="absolute -bottom-8 -right-6 w-24 h-24 bg-amber-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-                    <div className="relative bg-white p-4 rounded-3xl shadow-xl border border-pink-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                    <div className="relative bg-white/95 p-4 rounded-[2rem] shadow-[0_24px_60px_-24px_rgba(190,24,93,0.45)] border border-pink-100 transform rotate-1 hover:rotate-0 transition-transform duration-300">
                       <img 
                         src={heroFlatLay} 
                         alt="Cute products composition flat lay" 
@@ -642,7 +922,7 @@ export default function App() {
           </section>
 
           {/* 4. SHOP BY CATEGORY GRID */}
-          <section id="categories" className="py-12 md:py-20 bg-white">
+          <section id="categories" className="py-12 md:py-20 bg-white/80 backdrop-blur-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16 space-y-2 md:space-y-3">
                 <span className="text-pink-600 font-bold uppercase tracking-wider text-xs md:text-sm flex items-center justify-center gap-1">
@@ -659,14 +939,26 @@ export default function App() {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-8">
                 {productCategories.map((category) => {
                   const isTumblrCategory = category.id === 'diamond-tumblers';
+                  const isPlushCategory = category.id === 'plush-toys';
+                  const isFunCategory = category.id === 'soft-keychains';
+                  const isCameraCategory = category.id === 'print-cameras';
+                  const isDiecastCategory = category.id === 'diecast-models';
+                  const isGamingCategory = category.id === 'gaming-consoles';
 
-                  return isTumblrCategory ? (
+                  return isTumblrCategory || isPlushCategory || isFunCategory || isCameraCategory || isDiecastCategory || isGamingCategory ? (
                     <motion.button
                       key={category.id}
                       type="button"
-                      onClick={() => setCurrentPage('tumblr')}
+                      onClick={() => {
+                        if (isTumblrCategory) setCurrentPage('tumblr');
+                        else if (isPlushCategory) setCurrentPage('plush');
+                        else if (isFunCategory) setCurrentPage('fun');
+                        else if (isCameraCategory) setCurrentPage('camera');
+                        else if (isDiecastCategory) setCurrentPage('diecast');
+                        else if (isGamingCategory) setCurrentPage('gaming');
+                      }}
                       whileHover={{ y: -4 }}
-                      className="category-card group relative rounded-2xl md:rounded-3xl overflow-hidden border border-pink-50 hover:border-pink-200 shadow-sm hover:shadow-md transition-all duration-300 bg-[#FDF2F8]"
+                      className="category-card group relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border border-pink-100 hover:border-pink-200 shadow-[0_16px_40px_-20px_rgba(190,24,93,0.35)] hover:shadow-[0_20px_45px_-18px_rgba(190,24,93,0.4)] transition-all duration-300 bg-[#FDF2F8]"
                     >
                       <img
                         src={getCategoryImage(category.id, category.image)}
@@ -687,7 +979,7 @@ export default function App() {
                           </p>
                           <span className="mt-1.5 md:mt-2 inline-flex items-center gap-1 bg-pink-600/90 text-white font-bold text-[10px] md:text-xs py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg md:rounded-xl md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                             <MessageCircle className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current shrink-0" />
-                            View Tumblers
+                            {isTumblrCategory ? 'View Tumblers' : isPlushCategory ? 'View Plush Toys' : isFunCategory ? 'View Fun Toys' : isCameraCategory ? 'View Cameras' : isDiecastCategory ? 'View Die-Cast Models' : 'View Games'}
                           </span>
                         </div>
                       </div>
@@ -699,7 +991,7 @@ export default function App() {
                       target="_blank"
                       rel="noreferrer"
                       whileHover={{ y: -4 }}
-                      className="category-card group relative rounded-2xl md:rounded-3xl overflow-hidden border border-pink-50 hover:border-pink-200 shadow-sm hover:shadow-md transition-all duration-300 bg-[#FDF2F8]"
+                      className="category-card group relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border border-pink-100 hover:border-pink-200 shadow-[0_16px_40px_-20px_rgba(190,24,93,0.35)] hover:shadow-[0_20px_45px_-18px_rgba(190,24,93,0.4)] transition-all duration-300 bg-[#FDF2F8]"
                     >
                       <img
                         src={getCategoryImage(category.id, category.image)}
@@ -733,7 +1025,7 @@ export default function App() {
         </>
       )}
 
-      {currentPage !== 'tumblr' && (
+      {currentPage === 'home' && (
         <>
           {/* 5. WATCH OUR REELS SECTION */}
           <section id="reels" className="py-12 md:py-20 bg-[#FDF2F8]/60 border-y border-pink-100">
