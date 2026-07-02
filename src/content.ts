@@ -6,7 +6,7 @@ import plushCatImg from './assets/images/plush-cat.png';
 import kidsBottleImg from './assets/images/kids-bottle.png';
 import catBagImg from './assets/images/cat-bag.png';
 import bikeModelImg from './assets/images/bike-model.png';
-import artSetsImg from './assets/images/post-15.jpg';
+import artSetsImg from './assets/images/post-15.png';
 import pvpStationImg from './assets/images/post-04.png';
 import instantPrintCameraImg from './assets/images/post-08.png';
 import stitchBlindBoxImg from './assets/images/stitch .jpeg';
@@ -104,13 +104,13 @@ export const productCategories: ProductCategory[] = [
     whatsAppText: "Hi! I'm interested in the PVP Station Games 🎮"
   },
   {
-    id: "art-sets",
-    name: "Art Sets for Kids",
-    emoji: "🎨",
-    description: "Deluxe coloring and drawing art cases filled with vibrant markers, crayons, and paints.",
-    startingPrice: "₹450",
+    id: "makeup-kits",
+    name: "Makeup Kits",
+    emoji: "💄",
+    description: "Fashion girls organic makeup kits and play sets for kids, featuring themed sets like Barbie, Ariel, Unicorn, Frozen and K-pop.",
+    startingPrice: "₹349",
     image: artSetsImg,
-    whatsAppText: "Hi! I'm interested in the Art Sets for Kids 🎨"
+    whatsAppText: "Hi! I'm interested in the Makeup Kits 💄"
   },
   {
     id: "stitch-boxes",
@@ -129,6 +129,16 @@ export const productCategories: ProductCategory[] = [
     startingPrice: "₹1299",
     image: instantPrintCameraImg,
     whatsAppText: "Hi! I'm interested in the Instant Print Kids Cameras 📸"
+  }
+  ,
+  {
+    id: "diaries",
+    name: "Diaries & Notebooks",
+    emoji: "📓",
+    description: "Trendy diaries and spiral-bound notebooks featuring licensed and themed covers — perfect for school and journaling.",
+    startingPrice: "₹199",
+    image: '/doce encanto.png',
+    whatsAppText: "Hi! I'm interested in the Diaries & Notebooks 📓"
   }
 ];
 

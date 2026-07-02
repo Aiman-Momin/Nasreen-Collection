@@ -1,111 +1,179 @@
-import { useState, useEffect } from 'react';
-import { ArrowLeft, Truck, Sparkles, MapPin, Phone, ShoppingBag, Instagram, Menu, X, ExternalLink, Clock, MessageCircle, Heart, Gift, Star, ChevronDown, Compass } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import {
+  MessageCircle,
+  Menu,
+  X,
+  Sparkles,
+  ShoppingBag,
+  Instagram,
+  MapPin,
+  Phone,
+  Clock,
+  Truck,
+  Compass,
+  ChevronDown,
+  ArrowLeft
+} from 'lucide-react';
 import heroFlatLay from './assets/images/shop-flat-lay.png';
-import { storeConfig } from './config';
 import { productCategories, storeFaqs } from './content';
+import { storeConfig } from './config';
+
+type ProductCardItem = {
+  id: string;
+  title: string;
+  image: string;
+  price: string;
+  volume?: string;
+  description: string;
+};
+
+const createWhatsAppLink = (text: string) =>
+  `https://api.whatsapp.com/send?phone=${storeConfig.whatsAppPhone}&text=${encodeURIComponent(
+    text
+  )}`;
+
+const getCategoryImage = (_id: string, image: any) => {
+  return typeof image === 'string' ? image : (image as any);
+};
+
+class ErrorBoundary extends React.Component<{}, { error: Error | null }> {
+  constructor(props: {}) {
+    super(props);
+    this.state = { error: null };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+
+  componentDidCatch(error: Error, info: any) {
+    // eslint-disable-next-line no-console
+    console.error('ErrorBoundary caught:', error, info);
+  }
+
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{ padding: 24, fontFamily: 'Inter, sans-serif' }}>
+          <h2 style={{ color: '#BE185D' }}>Application Error</h2>
+          <pre style={{ whiteSpace: 'pre-wrap', background: '#fff', padding: 12, borderRadius: 8, border: '1px solid #f0e7ed' }}>
+            {String(this.state.error && this.state.error.stack ? this.state.error.stack : this.state.error)}
+          </pre>
+          <p>Please paste the error shown here into the chat and I'll fix it.</p>
+        </div>
+      );
+    }
+    // @ts-ignore
+    return this.props.children;
+  }
+}
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'tumblr' | 'plush' | 'makeup' | 'fun' | 'camera' | 'diecast' | 'gaming' | 'diaries'>('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(() => {
-    if (typeof window === 'undefined') return 'home';
-    const path = window.location.pathname;
-    if (path === '/tumblr') return 'tumblr';
-    if (path === '/plush') return 'plush';
-    if (path === '/fun') return 'fun';
-    if (path === '/camera') return 'camera';
-    if (path === '/diecast') return 'diecast';
-    if (path === '/gaming') return 'gaming';
-    return 'home';
-  });
-  const [activeTab, setActiveTab] = useState('all');
-
+  const [activeTab, setActiveTab] = useState<'all' | 'bags' | 'toys' | 'lifestyle'>('all');
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
   const [showBackButton, setShowBackButton] = useState(false);
 
-  const createWhatsAppLink = (text: string) => {
-    return `https://wa.me/${storeConfig.whatsAppPhone}?text=${encodeURIComponent(text)}`;
-  };
-
-  const getCategoryImage = (_id: string, image: any) => image;
-
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('nasreen-current-page', currentPage);
-      const nextPath = currentPage === 'tumblr'
-        ? '/tumblr'
-        : currentPage === 'plush'
-          ? '/plush'
-          : currentPage === 'fun'
-            ? '/fun'
-            : currentPage === 'camera'
-              ? '/camera'
-              : currentPage === 'diecast'
-                ? '/diecast'
-                : currentPage === 'gaming'
-                  ? '/gaming'
-                  : '/';
-      if (window.location.pathname !== nextPath) {
-        window.history.pushState({}, '', nextPath);
-      }
-    }
-  }, [currentPage]);
+    // Quick runtime log to help diagnose white screen issues in browser console
+    // Refresh the page and check DevTools Console for this message.
+    // It will confirm whether the App component mounted.
+    // Remove after debugging.
+    // eslint-disable-next-line no-console
+    console.log('App component initializing');
+  }, []);
 
-  useEffect(() => {
-    if (currentPage !== 'home') {
-      const onScroll = () => {
-        setShowBackButton(window.scrollY > 120);
-      };
-
-      onScroll();
-      window.addEventListener('scroll', onScroll);
-      return () => window.removeEventListener('scroll', onScroll);
-    }
-
-    setShowBackButton(false);
-  }, [currentPage]);
-
-  const instagramReels: any[] = [];
-  const filteredReels = instagramReels;
-
-  type ProductCardItem = {
-    id: string;
+  type ReelItem = {
+    shortCode: string;
     title: string;
-    image: string;
-    price: string;
-    volume: string;
     description: string;
+    whatsAppText: string;
+    tags?: string[];
   };
+
+  const reels: ReelItem[] = [
+    {
+      shortCode: 'Cx1AbCd',
+      title: 'Premium Tumblers Closeup',
+      description: 'Showcase of our diamond-textured tumblers in multiple colours.',
+      whatsAppText: "Hi! I'm interested in the tumblers shown in your reel.",
+      tags: ['lifestyle']
+    },
+    {
+      shortCode: 'Cy2EfGh',
+      title: 'Kawaii School Bags Haul',
+      description: 'New Korean school bags and accessories unboxed.',
+      whatsAppText: "Hi! I'm interested in the school bags from your reel.",
+      tags: ['bags']
+    },
+    {
+      shortCode: 'Cz3IjKl',
+      title: 'Toys & Plush Highlights',
+      description: 'Cute plushies and fun toys for gifting.',
+      whatsAppText: "Hi! I want the plush toy from your reel.",
+      tags: ['toys']
+    }
+  ];
+
+  const filteredReels = reels.filter((r) => {
+    if (activeTab === 'all') return true;
+    if (activeTab === 'bags') return r.tags?.includes('bags');
+    if (activeTab === 'toys') return r.tags?.includes('toys');
+    if (activeTab === 'lifestyle') return r.tags?.includes('lifestyle');
+    return true;
+  });
+
+
+  const makeupProducts: ProductCardItem[] = [
+    {
+      id: 'barbie-makeup-kit',
+      title: 'Barbie Makeup Kit',
+      image: '/barbie makeup kit.png',
+      price: '₹1050',
+      volume: '',
+      description: 'Fashion girls organic Barbie makeup kit.'
+    },
+    {
+      id: 'airel-makeup-kit',
+      title: 'Ariel Makeup Kit',
+      image: '/airel makeup kit.jpg',
+      price: '₹649',
+      volume: '',
+      description: 'Fashion girls organic Ariel makeup kit.'
+    },
+    {
+      id: 'unicorn-makeup-kit',
+      title: 'Unicorn Makeup Kit',
+      image: '/unicorn makeup kit.jpg',
+      price: '₹349',
+      volume: '',
+      description: 'Fashion girls organic Unicorn makeup kit.'
+    },
+    {
+      id: 'frozen-makeup-kit',
+      title: 'Frozen Makeup Kit',
+      image: '/frozen makeup kit.png',
+      price: '₹999',
+      volume: '',
+      description: 'Fashion girls organic Frozen makeup kit.'
+    },
+    {
+      id: 'kpop-makeup-kit',
+      title: 'K-pop Makeup Kit',
+      image: '/kpop makeup kit.jpg',
+      price: '₹749',
+      volume: '',
+      description: 'K-pop makeup set, Beauty Girl Best Friend Set, designed for kids.'
+    }
+  ];
 
   const tumblrProducts: ProductCardItem[] = [
     {
-      id: 'pink-basic',
-      title: 'Pink Insulated Stainless Steel Tumbler – 1200ml',
-      image: '/Pink tumblr.png',
-      price: '₹399',
-      volume: '1200ml',
-      description: 'Pink — insulated stainless steel tumbler with handle, lid, and straw.'
-    },
-    {
-      id: 'dark-green',
-      title: 'Dark Green Insulated Stainless Steel Tumbler – 1200ml',
-      image: '/Dark Green tumblr.png',
-      price: '₹399',
-      volume: '1200ml',
-      description: 'Dark green — insulated stainless steel tumbler with leakproof lid.'
-    },
-    {
-      id: 'bright-green',
-      title: 'Bright Green Insulated Stainless Steel Tumbler – 1200ml',
-      image: '/Bright green tumbler.png',
-      price: '₹399',
-      volume: '1200ml',
-      description: 'Bright green — insulated stainless steel tumbler with easy-grip handle.'
-    },
-    {
       id: 'white',
       title: 'White Insulated Stainless Steel Tumbler – 1200ml',
-      image: '/White tumblr.png',
+      image: '/white tumblr.png',
       price: '₹399',
       volume: '1200ml',
       description: 'White — insulated stainless steel tumbler with clean modern style.'
@@ -544,6 +612,16 @@ export default function App() {
       description: 'Unicorn themed kids camera includes instant print and comes with a USB cable for charging.'
     }
   ];
+  const gamingProducts: ProductCardItem[] = [
+    {
+      id: 'video-game',
+      title: 'Video Game Handheld Console',
+      image: '/video game.png',
+      price: '₹399',
+      volume: '',
+      description: 'Includes 400+ classic builtin games, handheld console.'
+    }
+  ];
 
   const diecastProducts: ProductCardItem[] = [
     {
@@ -593,6 +671,82 @@ export default function App() {
       price: '₹249',
       volume: '',
       description: 'Die-cast model of a red car with opening doors and light and sound.'
+    }
+    ,
+    {
+      id: 'aircraft-plane',
+      title: 'Interstellar Fighter Plane RC (EPP Foam)',
+      image: '/aircraft plane.jpg',
+      price: '₹850',
+      volume: '',
+      description: 'S1/S2 Interstellar Fighter Plane RC Drone with LED lights. Constructed from EPP foam for durability against crashes; rated for ages 14 and up.'
+    },
+    {
+      id: 'drone-e88',
+      title: 'E88 Pro Foldable Drone with Camera',
+      image: '/drone.jpg',
+      price: '₹999',
+      volume: '',
+      description: 'E88 Pro foldable drone with camera, designed for beginners. Package includes foldable drone, HD camera, and remote controller.'
+    },
+    {
+      id: 'follow-car',
+      title: 'Follow Car RC',
+      image: '/follow car.jpg',
+      price: '₹850',
+      volume: '',
+      description: 'Dream Racing Mini Multifunctional Vehicle for Kids. Features 2.4GHz remote control, 360-degree rotation, and follow & escape modes.'
+    },
+    {
+      id: 'hot-wheels-3-pack',
+      title: 'Hot Wheels 3-Pack',
+      image: '/hotwheels.jpg',
+      price: '₹200',
+      volume: '',
+      description: 'Hot Wheels 3-pack featuring three die-cast metal vehicles branded with the Speed logo. Recommended age 3+'
+    }
+  ];
+
+  const diaryProducts: ProductCardItem[] = [
+    {
+      id: 'doce-encanto',
+      title: 'Doce Encanto Diary',
+      image: '/doce encanto.png',
+      price: '₹449',
+      volume: '',
+      description: 'This notebook features a built-in solar-powered calculator on its cover. The design is titled Doce Encanto and is decorated with cherries, hearts, and stars, and comes with metal spiral binding.'
+    },
+    {
+      id: 'kuromi-diary',
+      title: 'Kuromi Diary',
+      image: '/kuromi diary.png',
+      price: '₹249',
+      volume: '',
+      description: 'Kuromi-themed notebook featuring a love club design.'
+    },
+    {
+      id: 'kuromi-lock-diary',
+      title: 'Kuromi Lock Diary',
+      image: '/kuromi lock diary.png',
+      price: '₹350',
+      volume: '',
+      description: 'Hello Kitty themed password log diary for girls and teenagers.'
+    },
+    {
+      id: 'lilo-diary',
+      title: 'Lilo Diary',
+      image: '/lilo diary.jpg',
+      price: '₹199',
+      volume: '',
+      description: 'Spiral bound notebook with a Hello Summer theme featuring Stitch wearing sunglasses.'
+    },
+    {
+      id: 'unicorn-design-diary',
+      title: 'Unicorn Design Diary',
+      image: '/unicorn design diary.png',
+      price: '₹199',
+      volume: '',
+      description: 'Trendy unicorn design regular notebook with a liquid-filled cover with floating glitter and unicorn graphics for girls.'
     }
   ];
 
@@ -806,6 +960,13 @@ export default function App() {
           'Adorable plush toys with sound, lights, and playful details for kids and gift lovers.',
           plushProducts
         )
+      ) : currentPage === 'makeup' ? (
+        renderCatalogPage(
+          'Makeup Kits',
+          'Fashion Makeup Kits',
+          'Organic and themed makeup play sets for kids. Tap any kit to order via WhatsApp.',
+          makeupProducts
+        )
       ) : currentPage === 'fun' ? (
         renderCatalogPage(
           'Fun Toys',
@@ -833,6 +994,13 @@ export default function App() {
           'Handheld Video Games',
           'Classic handheld gaming consoles with built-in fun for road trips and parties.',
           gamingProducts
+        )
+      ) : currentPage === 'diaries' ? (
+        renderCatalogPage(
+          'Diaries & Notebooks',
+          'Trendy Diaries',
+          'Spiral bound and lockable diaries with themed covers and fun features.',
+          diaryProducts
         )
       ) : (
         <>
@@ -944,8 +1112,10 @@ export default function App() {
                   const isCameraCategory = category.id === 'print-cameras';
                   const isDiecastCategory = category.id === 'diecast-models';
                   const isGamingCategory = category.id === 'gaming-consoles';
+                  const isMakeupCategory = category.id === 'makeup-kits';
+                  const isDiaryCategory = category.id === 'diaries';
 
-                  return isTumblrCategory || isPlushCategory || isFunCategory || isCameraCategory || isDiecastCategory || isGamingCategory ? (
+                  return isTumblrCategory || isPlushCategory || isFunCategory || isCameraCategory || isDiecastCategory || isGamingCategory || isMakeupCategory || isDiaryCategory ? (
                     <motion.button
                       key={category.id}
                       type="button"
@@ -956,6 +1126,8 @@ export default function App() {
                         else if (isCameraCategory) setCurrentPage('camera');
                         else if (isDiecastCategory) setCurrentPage('diecast');
                         else if (isGamingCategory) setCurrentPage('gaming');
+                        else if (isMakeupCategory) setCurrentPage('makeup');
+                        else if (isDiaryCategory) setCurrentPage('diaries');
                       }}
                       whileHover={{ y: -4 }}
                       className="category-card group relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border border-pink-100 hover:border-pink-200 shadow-[0_16px_40px_-20px_rgba(190,24,93,0.35)] hover:shadow-[0_20px_45px_-18px_rgba(190,24,93,0.4)] transition-all duration-300 bg-[#FDF2F8]"
@@ -979,7 +1151,7 @@ export default function App() {
                           </p>
                           <span className="mt-1.5 md:mt-2 inline-flex items-center gap-1 bg-pink-600/90 text-white font-bold text-[10px] md:text-xs py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg md:rounded-xl md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                             <MessageCircle className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current shrink-0" />
-                            {isTumblrCategory ? 'View Tumblers' : isPlushCategory ? 'View Plush Toys' : isFunCategory ? 'View Fun Toys' : isCameraCategory ? 'View Cameras' : isDiecastCategory ? 'View Die-Cast Models' : 'View Games'}
+                            {isTumblrCategory ? 'View Tumblers' : isPlushCategory ? 'View Plush Toys' : isMakeupCategory ? 'View Makeup Kits' : isFunCategory ? 'View Fun Toys' : isCameraCategory ? 'View Cameras' : isDiecastCategory ? 'View Die-Cast Models' : isGamingCategory ? 'View Games' : isDiaryCategory ? 'View Diaries' : 'Order'}
                           </span>
                         </div>
                       </div>
