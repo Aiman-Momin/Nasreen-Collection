@@ -72,9 +72,9 @@ class ErrorBoundary extends React.Component<{}, { error: Error | null }> {
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'tumblr' | 'plush' | 'makeup' | 'fun' | 'camera' | 'diecast' | 'gaming' | 'diaries'>('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'all' | 'bags' | 'toys' | 'lifestyle'>('all');
+  
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
-  const [showBackButton, setShowBackButton] = useState(false);
+  const [showBackButton, setShowBackButton] = useState(true);
 
   useEffect(() => {
     // Quick runtime log to help diagnose white screen issues in browser console
@@ -85,45 +85,7 @@ export default function App() {
     console.log('App component initializing');
   }, []);
 
-  type ReelItem = {
-    shortCode: string;
-    title: string;
-    description: string;
-    whatsAppText: string;
-    tags?: string[];
-  };
-
-  const reels: ReelItem[] = [
-    {
-      shortCode: 'Cx1AbCd',
-      title: 'Premium Tumblers Closeup',
-      description: 'Showcase of our diamond-textured tumblers in multiple colours.',
-      whatsAppText: "Hi! I'm interested in the tumblers shown in your reel.",
-      tags: ['lifestyle']
-    },
-    {
-      shortCode: 'Cy2EfGh',
-      title: 'Kawaii School Bags Haul',
-      description: 'New Korean school bags and accessories unboxed.',
-      whatsAppText: "Hi! I'm interested in the school bags from your reel.",
-      tags: ['bags']
-    },
-    {
-      shortCode: 'Cz3IjKl',
-      title: 'Toys & Plush Highlights',
-      description: 'Cute plushies and fun toys for gifting.',
-      whatsAppText: "Hi! I want the plush toy from your reel.",
-      tags: ['toys']
-    }
-  ];
-
-  const filteredReels = reels.filter((r) => {
-    if (activeTab === 'all') return true;
-    if (activeTab === 'bags') return r.tags?.includes('bags');
-    if (activeTab === 'toys') return r.tags?.includes('toys');
-    if (activeTab === 'lifestyle') return r.tags?.includes('lifestyle');
-    return true;
-  });
+  
 
 
   const makeupProducts: ProductCardItem[] = [
@@ -513,38 +475,6 @@ export default function App() {
       description: 'Wind-up skipping panda toy with bright green exercise bar.'
     },
     {
-      id: 'barbie-makeup-kit',
-      title: 'Barbie Makeup Kit',
-      image: '/barbie makeup kit.png',
-      price: '₹1050',
-      volume: '',
-      description: 'Fashion girls organic Barbie makeup kit.'
-    },
-    {
-      id: 'airel-makeup-kit',
-      title: 'Ariel Makeup Kit',
-      image: '/airel makeup kit.jpg',
-      price: '₹649',
-      volume: '',
-      description: 'Fashion girls organic Ariel makeup kit.'
-    },
-    {
-      id: 'unicorn-makeup-kit',
-      title: 'Unicorn Makeup Kit',
-      image: '/unicorn makeup kit.jpg',
-      price: '₹349',
-      volume: '',
-      description: 'Fashion girls organic Unicorn makeup kit.'
-    },
-    {
-      id: 'frozen-makeup-kit',
-      title: 'Frozen Makeup Kit',
-      image: '/frozen makeup kit.png',
-      price: '₹999',
-      volume: '',
-      description: 'Fashion girls organic Frozen makeup kit.'
-    },
-    {
       id: 'pink-squishy',
       title: 'Pink Squishy Toy',
       image: '/pink squishy.png',
@@ -845,9 +775,7 @@ export default function App() {
               <a href="#categories" className="font-medium text-gray-600 hover:text-pink-600 transition duration-200">
                 Categories
               </a>
-              <a href="#reels" className="font-medium text-gray-600 hover:text-pink-600 transition duration-200 flex items-center gap-1">
-                Watch Reels <span className="text-xs bg-pink-100 text-pink-700 font-semibold px-2 py-0.5 rounded-full">New</span>
-              </a>
+              
               <a href="#why-us" className="font-medium text-gray-600 hover:text-pink-600 transition duration-200">
                 Why Us
               </a>
@@ -903,13 +831,7 @@ export default function App() {
                 >
                   Categories
                 </a>
-                <a 
-                  href="#reels" 
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block font-medium text-gray-600 hover:text-pink-600 py-2 border-b border-gray-50"
-                >
-                  Watch Reels
-                </a>
+                
                 <a 
                   href="#why-us" 
                   onClick={() => setMobileMenuOpen(false)}
@@ -1199,106 +1121,7 @@ export default function App() {
 
       {currentPage === 'home' && (
         <>
-          {/* 5. WATCH OUR REELS SECTION */}
-          <section id="reels" className="py-12 md:py-20 bg-[#FDF2F8]/60 border-y border-pink-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              
-              <div className="text-center max-w-2xl mx-auto mb-8 md:mb-16 space-y-2 md:space-y-3">
-                <span className="text-pink-600 font-bold uppercase tracking-wider text-xs md:text-sm flex items-center justify-center gap-1">
-                  <Instagram className="w-4 h-4" /> Instagram Magic
-                </span>
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-                  Watch Our Live Reels 🎬
-                </h2>
-                <p className="text-sm md:text-base text-gray-500 hidden sm:block">
-                  See the lovely items in action! Hover a reel to order instantly via WhatsApp.
-                </p>
-
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center pt-4 md:pt-6">
-              <button 
-                onClick={() => setActiveTab('all')}
-                className={`px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border transition duration-200 ${
-                  activeTab === 'all' 
-                    ? 'bg-pink-600 text-white border-pink-600 shadow-sm' 
-                    : 'bg-white text-gray-600 border-pink-200 hover:bg-pink-50'
-                }`}
-              >
-                All ✨
-              </button>
-              <button 
-                onClick={() => setActiveTab('bags')}
-                className={`px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border transition duration-200 ${
-                  activeTab === 'bags' 
-                    ? 'bg-pink-600 text-white border-pink-600 shadow-sm' 
-                    : 'bg-white text-gray-600 border-pink-200 hover:bg-pink-50'
-                }`}
-              >
-                Bags 🎒
-              </button>
-              <button 
-                onClick={() => setActiveTab('toys')}
-                className={`px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border transition duration-200 ${
-                  activeTab === 'toys' 
-                    ? 'bg-pink-600 text-white border-pink-600 shadow-sm' 
-                    : 'bg-white text-gray-600 border-pink-200 hover:bg-pink-50'
-                }`}
-              >
-                Toys 🎮
-              </button>
-              <button 
-                onClick={() => setActiveTab('lifestyle')}
-                className={`px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold border transition duration-200 ${
-                  activeTab === 'lifestyle' 
-                    ? 'bg-pink-600 text-white border-pink-600 shadow-sm' 
-                    : 'bg-white text-gray-600 border-pink-200 hover:bg-pink-50'
-                }`}
-              >
-                Lifestyle 🍼
-              </button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {filteredReels.map((reel) => (
-              <div 
-                key={reel.shortCode}
-                className="bg-white rounded-3xl p-4 shadow-md border border-pink-100/50 flex flex-col h-full space-y-4"
-              >
-                {/* Embedded Instagram Iframe */}
-                <div className="relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 flex-grow" style={{ minHeight: '440px' }}>
-                  <iframe
-                    src={`https://www.instagram.com/p/${reel.shortCode}/embed/`}
-                    className="absolute inset-0 w-full h-full rounded-2xl border-0 shadow-inner"
-                    scrolling="no"
-                    allowTransparency={true}
-                    frameBorder="0"
-                    loading="lazy"
-                  ></iframe>
-                </div>
-
-                {/* Info & CTA */}
-                <div className="space-y-3 pt-2">
-                  <h3 className="font-display font-bold text-gray-900">{reel.title}</h3>
-                  <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">{reel.description}</p>
-                  
-                  <a 
-                    href={createWhatsAppLink(reel.whatsAppText)}
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-4 rounded-xl transition duration-200 text-sm shadow-sm"
-                  >
-                    <MessageCircle className="w-4 h-4 fill-current" />
-                    <span>Order This Item 🎁</span>
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
+          
           {/* 6. TRUST STRIP */}
           <section id="why-us" className="bg-pink-700 py-16 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
