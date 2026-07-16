@@ -141,14 +141,6 @@ export default function App() {
 
   const tumblrProducts: ProductCardItem[] = [
     {
-      id: 'white',
-      title: 'White Insulated Stainless Steel Tumbler – 1200ml',
-      image: '/white tumblr.png',
-      price: '₹399',
-      volume: '1200ml',
-      description: 'White — insulated stainless steel tumbler with clean modern style.'
-    },
-    {
       id: 'black',
       title: 'Black Insulated Stainless Steel Tumbler – 1200ml',
       image: '/black tumblr.png',
