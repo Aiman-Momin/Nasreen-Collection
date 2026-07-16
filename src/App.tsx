@@ -128,6 +128,14 @@ export default function App() {
       price: '₹749',
       volume: '',
       description: 'K-pop makeup set, Beauty Girl Best Friend Set, designed for kids.'
+    },
+    {
+      id: 'white-pearl-necklace-set',
+      title: 'White Pearl Necklace Set',
+      image: '/white pearl necklace kit.jpeg',
+      price: '₹199',
+      volume: '',
+      description: 'This set includes a hidden pearl and a heart-shaped caged pendant for gifts.'
     }
   ];
 
@@ -248,7 +256,7 @@ export default function App() {
       id: 'black-gucci-stanley',
       title: 'Black Gucci & Stanley Style Insulated Tumbler – 1200ml',
       image: '/black gucci&stanley tumblr.png',
-      price: '₹550',
+      price: '₹850',
       volume: '1200ml',
       description: 'Black Gucci and Stanley inspired insulated stainless steel tumbler with luxe print.'
     },
@@ -411,6 +419,174 @@ export default function App() {
       price: '₹550',
       volume: '1200ml',
       description: 'Neon pink — insulated stainless steel tumbler with bright statement finish.'
+    },
+    {
+      id: 'light-blue-stanley-ribbed',
+      title: 'Light Blue Stanley Ribbed Tumbler – 1200ml',
+      image: '/light blue stanley ribbed.jpeg',
+      price: '₹799',
+      volume: '1200ml',
+      description: 'This is a stainless steel vacuum insulated tumbler with a light blue ribbed finish. 1200 ml.'
+    },
+    {
+      id: 'light-pink-stanley-ribbed',
+      title: 'Light Pink Stanley Ribbed Tumbler – 1200ml',
+      image: '/light pink stanley ribbed.jpeg',
+      price: '₹799',
+      volume: '1200ml',
+      description: 'This is a stainless steel vacuum insulated tumbler with a light pink ribbed finish. 1200 ml.'
+    },
+    {
+      id: 'black-stanley-ribbed',
+      title: 'Black Stanley Ribbed Tumbler – 1200ml',
+      image: '/black stanley ribbed.jpeg',
+      price: '₹799',
+      volume: '1200ml',
+      description: 'This is a stainless steel vacuum insulated tumbler with a black ribbed finish. 1200 ml.'
+    },
+    {
+      id: 'offwhite-stanley-ribbed',
+      title: 'Off-White Stanley Ribbed Tumbler – 1200ml',
+      image: '/offwhite stanley ribbed.jpeg',
+      price: '₹799',
+      volume: '1200ml',
+      description: 'This is a stainless steel vacuum insulated tumbler with an off-white ribbed finish. 1200 ml.'
+    },
+    {
+      id: 'dark-blue-stanley',
+      title: 'Dark Blue Stanley Tumbler – 1200ml',
+      image: '/dark blue stanley.jpeg',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'This is a dark blue Stanley tumbler featuring a 40 oz capacity. It is constructed from recycled stainless steel with vacuum insulation and designed to keep drinks cold for hours. 1200 ml.'
+    },
+    {
+      id: 'offwhite-stanley',
+      title: 'Off-White Stanley Tumbler – 1200ml',
+      image: '/offwhite stanley.jpeg',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'This is an off-white Stanley tumbler featuring a 40 oz capacity. It is constructed from recycled stainless steel with vacuum insulation and designed to keep drinks cold for hours. 1200 ml.'
+    },
+    {
+      id: 'light-purple-stanley',
+      title: 'Light Purple Stanley Tumbler – 1200ml',
+      image: '/light purple stanley.jpeg',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'This is a light purple Stanley tumbler featuring a 40 oz capacity. It is constructed from recycled stainless steel with vacuum insulation and designed to keep drinks cold for hours. 1200 ml.'
+    },
+    {
+      id: 'dark-pink-stanley',
+      title: 'Dark Pink Stanley Tumbler – 1200ml',
+      image: '/dark pink stanley.jpeg',
+      price: '₹599',
+      volume: '1200ml',
+      description: 'This is a dark pink Stanley tumbler featuring a 40 oz capacity. It is constructed from recycled stainless steel with vacuum insulation and designed to keep drinks cold for hours. 1200 ml.'
+    },
+    {
+      id: 'pink-roses-stanley',
+      title: 'Pink Roses Stanley Tumbler – 1200ml',
+      image: '/pink roses stanley.jpeg',
+      price: '₹850',
+      volume: '1200ml',
+      description: 'Stanley x Love Shack Fancy Ice Flow Floral. This insulated stainless steel tumbler features double vacuum insulation and a sturdy handle. 1200 ml.'
+    },
+    {
+      id: 'floral-stanley-with-handle',
+      title: 'Floral Stanley With Handle – 1200ml',
+      image: '/floral stanley with handle.jpeg',
+      price: '₹850',
+      volume: '1200ml',
+      description: 'Stanley x Love Shack Fancy Ice Floral pattern with stainless steel, designed to keep drinks cold for hours, with a sturdy handle. 1200 ml.'
+    },
+    {
+      id: 'black-and-silver-stanley',
+      title: 'Black and Silver Stanley Tumbler – 1200ml',
+      image: '/black and silver stanley.jpeg',
+      price: '₹999',
+      volume: '1200ml',
+      description: 'This is a Stanley Quencher Tumbler featuring a customized design inspired by Taylor Swift\'s Reputation album. 1200 ml.'
+    },
+    {
+      id: 'skin-color-stanley',
+      title: 'Skin Color Stanley Tumbler – 1200ml',
+      image: '/skin color stanley.jpeg',
+      price: '₹999',
+      volume: '1200ml',
+      description: 'This is a Stanley Tumbler featuring Taylor Swift Reputation-themed fan art. 1200 ml.'
+    },
+    {
+      id: 'pink-floral-stanley',
+      title: 'Pink Floral Stanley Tumbler – 1200ml',
+      image: '/pink floral stanley.jpeg',
+      price: '₹1050',
+      volume: '1200ml',
+      description: 'This is a Stanley Quencher Tumbler from the Love Shack Fancy collaboration. It is designed to keep drinks cold for hours and is 1200 ml.'
+    },
+    {
+      id: 'brown-gucci-stanley',
+      title: 'Brown Gucci Stanley Tumbler – 1200ml',
+      image: '/brown gucci stanley.jpeg',
+      price: '₹1050',
+      volume: '1200ml',
+      description: 'Stanley featuring a customized laser engraved Gucci GG Morgan pattern. 1200 ml.'
+    },
+    {
+      id: 'blue-and-gold-bow-stanley',
+      title: 'Blue and Gold Bow Stanley Tumbler – 1200ml',
+      image: '/blue and gold bow stanley.jpeg',
+      price: '₹1050',
+      volume: '1200ml',
+      description: 'This is a 40-ounce Stanley Quencher Flowstate Tumbler featuring a blue Nightfall glass deco floral design. 1200 ml.'
+    },
+    {
+      id: 'black-and-gold-gucci-stanley',
+      title: 'Black and Gold Gucci Stanley Tumbler – 1200ml',
+      image: '/black and gold gucci stanley.jpeg',
+      price: '₹1050',
+      volume: '1200ml',
+      description: 'This tumbler features a custom Gucci-inspired monogram logo design with stainless steel double-walled vacuum insulation. 1200 ml.'
+    },
+    {
+      id: 'blue-bow-stanley',
+      title: 'Blue Bow Stanley Tumbler – 1200ml',
+      image: '/blue bow stanley.jpeg',
+      price: '₹1050',
+      volume: '1200ml',
+      description: 'Stanley x Love Shack Fancy Tumbler featuring a white body with a blue and pink floral pattern. 1200 ml.'
+    },
+    {
+      id: 'floral-stanley',
+      title: 'Floral Stanley Tumbler – 1200ml',
+      image: '/floral stanley.jpeg',
+      price: '₹999',
+      volume: '1200ml',
+      description: 'This is a limited edition Stanley x Love Shack Fancy Flowstate Tumbler in a pink floral Ribbon Rosa pattern. 1200 ml.'
+    },
+    {
+      id: 'black-leopard-print-stanley',
+      title: 'Black Leopard Print Stanley Tumbler – 1200ml',
+      image: '/black leopard print stanley.jpeg',
+      price: '₹999',
+      volume: '1200ml',
+      description: 'This is a Stanley Quencher featuring a black leopard print design. 1200 ml.'
+    },
+    {
+      id: 'skin-leopard-print-stanley',
+      title: 'Skin Leopard Print Stanley Tumbler – 1200ml',
+      image: '/skin leopard print stanley.jpeg',
+      price: '₹999',
+      volume: '1200ml',
+      description: 'This is a Stanley Quencher featuring a skin leopard print design. 1200 ml.'
+    },
+    {
+      id: 'white-pink-flowers-stanley',
+      title: 'White Pink Flowers Stanley Tumbler – 1200ml',
+      image: '/white pink flowers stanley.jpeg',
+      price: '₹899',
+      volume: '1200ml',
+      description: 'This is a Stanley Quencher Tumbler featuring a floral pattern with stainless steel double wall. 1200 ml.'
     }
   ];
 
