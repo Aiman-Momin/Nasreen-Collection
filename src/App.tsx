@@ -256,6 +256,54 @@ export default function App() {
       price: '₹99',
       volume: '',
       description: 'Cute Spider-Woman face-changer keychain in a fun, collectible style.'
+    },
+    {
+      id: 'chu-chu-grey-hammer-keychain',
+      title: 'Chu-Chu Grey Hammer Keychain',
+      image: '/chu chu grey cartoon hammer keychain.png',
+      price: '₹149',
+      volume: '',
+      description: 'Grey Chu-Chu cartoon hammer keychain with a cute, collectible finish.'
+    },
+    {
+      id: 'chu-chu-orange-hammer-keychain',
+      title: 'Chu-Chu Orange Hammer Keychain',
+      image: '/Chu-Chu orange cartoon hammer keychain.png',
+      price: '₹149',
+      volume: '',
+      description: 'Orange Chu-Chu cartoon hammer keychain designed for a playful accessory look.'
+    },
+    {
+      id: 'hello-kitty-hammer-keychain',
+      title: 'Hello Kitty Hammer Keychain',
+      image: '/hello kitty hammer keychain.png',
+      price: '₹149',
+      volume: '',
+      description: 'Hello Kitty-themed hammer keychain with a cute and charming personality.'
+    },
+    {
+      id: 'ice-cream-bear-keychain',
+      title: 'Ice Cream Bear Keychain',
+      image: '/ice cream bear keychain.png',
+      price: '₹149',
+      volume: '',
+      description: 'Sweet ice cream bear keychain with a fun, soft pastel aesthetic.'
+    },
+    {
+      id: 'pink-ice-cream-cone-keychain',
+      title: 'Pink Ice Cream Cone Keychain',
+      image: '/pink icecream cone keychain.jpg',
+      price: '₹149',
+      volume: '',
+      description: 'Pastel pink ice cream cone keychain for a cheerful, dreamy finish.'
+    },
+    {
+      id: 'super-mario-hammer-keychain',
+      title: 'Super Mario Hammer Keychain',
+      image: '/super mario hammer keychain.png',
+      price: '₹149',
+      volume: '',
+      description: 'Classic Super Mario-inspired hammer keychain for a playful gaming vibe.'
     }
   ];
 
