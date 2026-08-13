@@ -397,14 +397,6 @@ export default function App() {
       description: 'Tri-color pastel design — insulated stainless steel tumbler with playful finish.'
     },
     {
-      id: 'vibrant-blue',
-      title: 'Vibrant Blue Insulated Stainless Steel Tumbler – 1200ml',
-      image: '/vibrant blue tumblr.png',
-      price: '₹399',
-      volume: '1200ml',
-      description: 'Vibrant blue — insulated stainless steel tumbler with eye-catching colour.'
-    },
-    {
       id: 'neon-pink',
       title: 'Neon Pink Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Neon Pink tumblr.png',
