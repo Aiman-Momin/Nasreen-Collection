@@ -32,6 +32,15 @@ export const productCategories: ProductCategory[] = [
     whatsAppText: "Hi! I'm interested in the Korean School Bags 🎒"
   },
   {
+    id: "keychains-bag-charms",
+    name: "Keychains & Bag Charms",
+    emoji: "🗝️",
+    description: "Cute character keychains and bag charms designed to add a playful finishing touch to bags, backpacks, and keys.",
+    startingPrice: "₹199",
+    image: "/kuromi bag charm and keychain.png",
+    whatsAppText: "Hi! I'm interested in the Keychains & Bag Charms 🗝️"
+  },
+  {
     id: "soft-keychains",
     name: "Fun Toys",
     emoji: "🧸",

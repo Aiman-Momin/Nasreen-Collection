@@ -70,7 +70,7 @@ class ErrorBoundary extends React.Component<{}, { error: Error | null }> {
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'tumblr' | 'plush' | 'makeup' | 'fun' | 'camera' | 'diecast' | 'gaming' | 'diaries'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'tumblr' | 'plush' | 'makeup' | 'fun' | 'camera' | 'diecast' | 'gaming' | 'diaries' | 'keychains'>('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const [faqOpenIndex, setFaqOpenIndex] = useState<number | null>(null);
@@ -87,6 +87,177 @@ export default function App() {
 
   
 
+
+  const keychainProducts: ProductCardItem[] = [
+    {
+      id: 'kuromi-bag-charm',
+      title: 'Kuromi Bag Charm & Keychain Set',
+      image: '/kuromi bag charm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'Cute Kuromi-themed accessory set designed for backpacks, bags, and keys.'
+    },
+    {
+      id: 'panda-bag-charm',
+      title: 'Panda Bag Charm & Keychain Set',
+      image: '/panda keychain and bagcharm.png',
+      price: '₹199',
+      volume: '',
+      description: 'A soft, playful panda accessory set for a charming everyday finish.'
+    },
+    {
+      id: 'teddy-bear-bag-charm',
+      title: 'Teddy Bear Bag Charm & Keychain Set',
+      image: '/teddy bear bag charm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'Classic teddy bear styling in a compact bag accessory set.'
+    },
+    {
+      id: 'brown-bunny-charm',
+      title: 'Brown Bunny Bag Charm & Keychain Set',
+      image: '/brown bunny bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'A warm-toned bunny charm set that adds a sweet, collectible touch.'
+    },
+    {
+      id: 'pink-bunny-charm',
+      title: 'Pink Bunny Bag Charm & Keychain Set',
+      image: '/pink bunny bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'Pastel pink bunny design made for stylish, adorable bag details.'
+    },
+    {
+      id: 'bunny-in-dress-charm',
+      title: 'Bunny in Dress Bag Charm & Keychain Set',
+      image: '/bunny in dress bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'A dress-wearing bunny accessory set with a whimsical look.'
+    },
+    {
+      id: 'elephant-bag-charm',
+      title: 'Elephant Bag Charm & Keychain Set',
+      image: '/elephant bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'A cuddly elephant charm set for bags, backpacks, and keyrings.'
+    },
+    {
+      id: 'lion-bag-charm',
+      title: 'Lion Bag Charm & Keychain Set',
+      image: '/lion bag charm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'Bold lion-inspired accessory set with playful character detailing.'
+    },
+    {
+      id: 'orange-lion-bag-charm',
+      title: 'Orange Lion Bag Charm & Keychain Set',
+      image: '/orange lion keychain and bagcharm.png',
+      price: '₹199',
+      volume: '',
+      description: 'Bright orange lion design for a lively, standout accessory look.'
+    },
+    {
+      id: 'alpaca-bag-charm',
+      title: 'Alpaca Bag Charm & Keychain Set',
+      image: '/alpaca bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'A soft alpaca-themed accessory set with a cute, collectible appeal.'
+    },
+    {
+      id: 'blue-dog-bag-charm',
+      title: 'Blue Dog Bag Charm & Keychain Set',
+      image: '/blue dog bag charm and key chain.png',
+      price: '₹199',
+      volume: '',
+      description: 'Blue dog design crafted for a playful, cheerful finish to everyday bags.'
+    },
+    {
+      id: 'camel-bag-charm',
+      title: 'Camel Bag Charm & Keychain Set',
+      image: '/camel bag charm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'A charming camel design with a polished yet cute accessory look.'
+    },
+    {
+      id: 'ginger-cat-bag-charm',
+      title: 'Ginger Cat Bag Charm & Keychain Set',
+      image: '/ginger cat bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'Ginger cat inspired charm set with a warm and adorable personality.'
+    },
+    {
+      id: 'lamb-bag-charm',
+      title: 'Lamb Bag Charm & Keychain Set',
+      image: '/lamb bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'Cute lamb-inspired charm set for a soft, sweet accessory statement.'
+    },
+    {
+      id: 'penguin-bag-charm',
+      title: 'Penguin Bag Charm & Keychain Set',
+      image: '/penguin bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'A playful penguin accessory set that adds personality to any bag.'
+    },
+    {
+      id: 'fluffy-sheep-bag-charm',
+      title: 'Fluffy Sheep Bag Charm & Keychain Set',
+      image: '/fluffy sheep bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'A soft, fluffy sheep accessory set with a boutique charm aesthetic.'
+    },
+    {
+      id: 'bunny-with-bag-charm',
+      title: 'Bunny with Bag Bag Charm & Keychain Set',
+      image: '/bunny with bag bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'A cheerful bunny accessory featuring a tiny bag silhouette and playful charm.'
+    },
+    {
+      id: 'bunny-with-cap-charm',
+      title: 'Bunny with Cap Bag Charm & Keychain Set',
+      image: '/bunny with cap bagcharm and keychain.png',
+      price: '₹199',
+      volume: '',
+      description: 'Bright and friendly bunny design with a cap detail for extra character.'
+    },
+    {
+      id: 'two-in-one-panda-squirrel-charm',
+      title: 'Two-in-One Panda & Squirrel Bag Charm & Keychain Set',
+      image: '/Two-in-one panda and squirrel keychain and bagcharm.png',
+      price: '₹199',
+      volume: '',
+      description: 'A playful two-in-one character accessory set featuring a panda and squirrel theme.'
+    },
+    {
+      id: 'spiderman-face-changer-keychain',
+      title: 'Spiderman Face Changer Keychain',
+      image: '/spiderman face changer keychain.png',
+      price: '₹99',
+      volume: '',
+      description: 'Fun Spider-Man face-changer keychain with a playful character twist.'
+    },
+    {
+      id: 'spiderwoman-face-changer-keychain',
+      title: 'Spider-Woman Face Changer Keychain',
+      image: '/spiderwoman face changer keychain.png',
+      price: '₹99',
+      volume: '',
+      description: 'Cute Spider-Woman face-changer keychain in a fun, collectible style.'
+    }
+  ];
 
   const makeupProducts: ProductCardItem[] = [
     {
@@ -192,7 +363,7 @@ export default function App() {
       id: 'blue-floral',
       title: 'Blue Floral Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Blue floral tumblr.png',
-      price: '₹550',
+      price: '₹599',
       volume: '1200ml',
       description: 'Blue floral pattern — insulated stainless steel tumbler with handle & straw.'
     },
@@ -200,7 +371,7 @@ export default function App() {
       id: 'purple-floral',
       title: 'Purple Floral Insulated Stainless Steel Tumbler – 1200ml',
       image: '/Purple floral tumblr.png',
-      price: '₹550',
+      price: '₹599',
       volume: '1200ml',
       description: 'Purple floral pattern — insulated stainless steel tumbler with handle & straw.'
     },
@@ -256,7 +427,7 @@ export default function App() {
       id: 'blue-gucci-stanley',
       title: 'Blue Gucci & Stanley Style Insulated Tumbler – 1200ml',
       image: '/blue gucci&stanley tumblr.png',
-      price: '₹550',
+      price: '₹899',
       volume: '1200ml',
       description: 'Blue Gucci and Stanley inspired insulated stainless steel tumbler with premium style.'
     },
@@ -360,7 +531,7 @@ export default function App() {
       id: 'limited-edition-barbie-stanley',
       title: 'Limited Edition Barbie Stanley Style Insulated Tumbler – 1200ml',
       image: '/limited edition barbie stanley tumblr.png',
-      price: '₹599',
+      price: '₹900',
       volume: '1200ml',
       description: 'Limited edition Barbie Stanley inspired insulated stainless steel tumbler with luxe print.'
     },
@@ -392,7 +563,7 @@ export default function App() {
       id: 'tri-color',
       title: 'Tri-Color Pastel Insulated Stainless Steel Tumbler – 1200ml',
       image: '/tri-color (blue, prink and purple design) tumblr.png',
-      price: '₹550',
+      price: '₹850',
       volume: '1200ml',
       description: 'Tri-color pastel design — insulated stainless steel tumbler with playful finish.'
     },
@@ -1077,6 +1248,13 @@ export default function App() {
           'Classic handheld gaming consoles with built-in fun for road trips and parties.',
           gamingProducts
         )
+      ) : currentPage === 'keychains' ? (
+        renderCatalogPage(
+          'Keychains & Bag Charms',
+          'Cute Character Accessories',
+          'A curated collection of adorable keychains and bag charms, each designed to add a charming personal touch to bags, backpacks, and everyday essentials.',
+          keychainProducts
+        )
       ) : currentPage === 'diaries' ? (
         renderCatalogPage(
           'Diaries & Notebooks',
@@ -1191,13 +1369,14 @@ export default function App() {
                   const isTumblrCategory = category.id === 'diamond-tumblers';
                   const isPlushCategory = category.id === 'plush-toys';
                   const isFunCategory = category.id === 'soft-keychains';
+                  const isKeychainsCategory = category.id === 'keychains-bag-charms';
                   const isCameraCategory = category.id === 'print-cameras';
                   const isDiecastCategory = category.id === 'diecast-models';
                   const isGamingCategory = category.id === 'gaming-consoles';
                   const isMakeupCategory = category.id === 'makeup-kits';
                   const isDiaryCategory = category.id === 'diaries';
 
-                  return isTumblrCategory || isPlushCategory || isFunCategory || isCameraCategory || isDiecastCategory || isGamingCategory || isMakeupCategory || isDiaryCategory ? (
+                  return isTumblrCategory || isPlushCategory || isFunCategory || isKeychainsCategory || isCameraCategory || isDiecastCategory || isGamingCategory || isMakeupCategory || isDiaryCategory ? (
                     <motion.button
                       key={category.id}
                       type="button"
@@ -1205,6 +1384,7 @@ export default function App() {
                         if (isTumblrCategory) setCurrentPage('tumblr');
                         else if (isPlushCategory) setCurrentPage('plush');
                         else if (isFunCategory) setCurrentPage('fun');
+                        else if (isKeychainsCategory) setCurrentPage('keychains');
                         else if (isCameraCategory) setCurrentPage('camera');
                         else if (isDiecastCategory) setCurrentPage('diecast');
                         else if (isGamingCategory) setCurrentPage('gaming');
@@ -1233,7 +1413,7 @@ export default function App() {
                           </p>
                           <span className="mt-1.5 md:mt-2 inline-flex items-center gap-1 bg-pink-600/90 text-white font-bold text-[10px] md:text-xs py-1.5 px-2.5 md:py-2 md:px-3 rounded-lg md:rounded-xl md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                             <MessageCircle className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current shrink-0" />
-                            {isTumblrCategory ? 'View Tumblers' : isPlushCategory ? 'View Plush Toys' : isMakeupCategory ? 'View Makeup Kits' : isFunCategory ? 'View Fun Toys' : isCameraCategory ? 'View Cameras' : isDiecastCategory ? 'View Die-Cast Models' : isGamingCategory ? 'View Games' : isDiaryCategory ? 'View Diaries' : 'Order'}
+                            {isTumblrCategory ? 'View Tumblers' : isPlushCategory ? 'View Plush Toys' : isMakeupCategory ? 'View Makeup Kits' : isFunCategory ? 'View Fun Toys' : isKeychainsCategory ? 'View Keychains' : isCameraCategory ? 'View Cameras' : isDiecastCategory ? 'View Die-Cast Models' : isGamingCategory ? 'View Games' : isDiaryCategory ? 'View Diaries' : 'Order'}
                           </span>
                         </div>
                       </div>
